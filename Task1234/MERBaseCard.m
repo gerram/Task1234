@@ -8,31 +8,12 @@
 
 #import "MERBaseCard.h"
 
+static const CGFloat CORNER_RADIUS = 10.0;
+static const CGFloat CORNER_FONT_HEIGHT = 180.0;
+
+
+
 @implementation MERBaseCard
-
-- (CGFloat)cornerRadius
-{
-    //TODO: make automatic for defining these params
-    CGFloat defaultRadius = 10.0;
-    CGFloat scaleFactor = 1.0;
-    
-    return defaultRadius * scaleFactor;
-}
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-    UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:[self cornerRadius]];
-    
-    [roundedRect addClip];
-    
-    [[UIColor whiteColor] setFill];
-    UIRectFill(self.bounds);
-    [[UIColor blackColor] setStroke];
-    [roundedRect stroke];
-}
 
 #pragma mark - Init
 - (void)awakeFromNib
@@ -54,5 +35,37 @@
     self.opaque = FALSE;
     self.contentMode = UIViewContentModeRedraw;
 }
+
+
+#pragma mark - Drawing
+- (CGFloat)cornerScaleFactor
+{
+    return self.bounds.size.height / CORNER_FONT_HEIGHT;
+}
+
+- (CGFloat)cornerRadius
+{
+    return CORNER_RADIUS * [self cornerScaleFactor];
+}
+
+
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+    UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:[self cornerRadius]];
+    
+    [roundedRect addClip];
+    
+    [[UIColor whiteColor] setFill];
+    UIRectFill(self.bounds);
+    [[UIColor blackColor] setStroke];
+    [roundedRect stroke];
+}
+
+
+
+
 
 @end

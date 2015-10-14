@@ -10,4 +10,10 @@
 
 @interface MERMemoryCard : MERBaseCard
 
+@property (nonatomic, assign) NSUInteger rank;
+@property (nonatomic, assign) BOOL faceUP;
+@property (nonatomic, strong) NSString *suit;
+
+
+
 @end

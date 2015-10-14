@@ -20,6 +20,7 @@
 		5EB10CF61BCE61A100CEA052 /* MERBaseCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CF51BCE61A100CEA052 /* MERBaseCard.m */; settings = {ASSET_TAGS = (); }; };
 		5EB10CF91BCE715C00CEA052 /* MERMemoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CF81BCE715C00CEA052 /* MERMemoryVC.m */; settings = {ASSET_TAGS = (); }; };
 		5EB10CFC1BCE79D000CEA052 /* MERSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CFB1BCE79D000CEA052 /* MERSetVC.m */; settings = {ASSET_TAGS = (); }; };
+		5EB10CFE1BCE7B8600CEA052 /* MemoryCardImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EB10CFD1BCE7B8600CEA052 /* MemoryCardImages.xcassets */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		5EB10CF81BCE715C00CEA052 /* MERMemoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERMemoryVC.m; sourceTree = "<group>"; };
 		5EB10CFA1BCE79D000CEA052 /* MERSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERSetVC.h; sourceTree = "<group>"; };
 		5EB10CFB1BCE79D000CEA052 /* MERSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERSetVC.m; sourceTree = "<group>"; };
+		5EB10CFD1BCE7B8600CEA052 /* MemoryCardImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MemoryCardImages.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,17 +118,17 @@
 		5EB10CB51BCE5B8A00CEA052 /* Task1234 */ = {
 			isa = PBXGroup;
 			children = (
+				5EB10CFF1BCE8CAE00CEA052 /* BaseClasses */,
 				5EB10CEA1BCE5D7100CEA052 /* Set */,
 				5EB10CE91BCE5D6500CEA052 /* Memory */,
 				5EB10CBC1BCE5B8A00CEA052 /* ViewController.h */,
 				5EB10CBD1BCE5B8A00CEA052 /* ViewController.m */,
 				5EB10CBF1BCE5B8A00CEA052 /* Main.storyboard */,
 				5EB10CC21BCE5B8A00CEA052 /* Assets.xcassets */,
+				5EB10CFD1BCE7B8600CEA052 /* MemoryCardImages.xcassets */,
 				5EB10CC41BCE5B8A00CEA052 /* LaunchScreen.storyboard */,
 				5EB10CC71BCE5B8B00CEA052 /* Info.plist */,
 				5EB10CB61BCE5B8A00CEA052 /* Supporting Files */,
-				5EB10CF41BCE61A100CEA052 /* MERBaseCard.h */,
-				5EB10CF51BCE61A100CEA052 /* MERBaseCard.m */,
 			);
 			path = Task1234;
 			sourceTree = "<group>";
@@ -179,6 +181,15 @@
 				5EB10CFB1BCE79D000CEA052 /* MERSetVC.m */,
 			);
 			name = Set;
+			sourceTree = "<group>";
+		};
+		5EB10CFF1BCE8CAE00CEA052 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				5EB10CF41BCE61A100CEA052 /* MERBaseCard.h */,
+				5EB10CF51BCE61A100CEA052 /* MERBaseCard.m */,
+			);
+			name = BaseClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EB10CC61BCE5B8B00CEA052 /* LaunchScreen.storyboard in Resources */,
+				5EB10CFE1BCE7B8600CEA052 /* MemoryCardImages.xcassets in Resources */,
 				5EB10CC31BCE5B8A00CEA052 /* Assets.xcassets in Resources */,
 				5EB10CC11BCE5B8A00CEA052 /* Main.storyboard in Resources */,
 			);
