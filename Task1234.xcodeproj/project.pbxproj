@@ -15,6 +15,11 @@
 		5EB10CC61BCE5B8B00CEA052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB10CC41BCE5B8A00CEA052 /* LaunchScreen.storyboard */; };
 		5EB10CD11BCE5B8B00CEA052 /* Task1234Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CD01BCE5B8B00CEA052 /* Task1234Tests.m */; };
 		5EB10CDC1BCE5B8B00CEA052 /* Task1234UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CDB1BCE5B8B00CEA052 /* Task1234UITests.m */; };
+		5EB10CF01BCE5E5C00CEA052 /* MERMemoryCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CEF1BCE5E5C00CEA052 /* MERMemoryCard.m */; settings = {ASSET_TAGS = (); }; };
+		5EB10CF31BCE5E7F00CEA052 /* MERSetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CF21BCE5E7F00CEA052 /* MERSetCard.m */; settings = {ASSET_TAGS = (); }; };
+		5EB10CF61BCE61A100CEA052 /* MERBaseCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CF51BCE61A100CEA052 /* MERBaseCard.m */; settings = {ASSET_TAGS = (); }; };
+		5EB10CF91BCE715C00CEA052 /* MERMemoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CF81BCE715C00CEA052 /* MERMemoryVC.m */; settings = {ASSET_TAGS = (); }; };
+		5EB10CFC1BCE79D000CEA052 /* MERSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10CFB1BCE79D000CEA052 /* MERSetVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,16 @@
 		5EB10CD71BCE5B8B00CEA052 /* Task1234UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Task1234UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB10CDB1BCE5B8B00CEA052 /* Task1234UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task1234UITests.m; sourceTree = "<group>"; };
 		5EB10CDD1BCE5B8B00CEA052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EB10CEE1BCE5E5C00CEA052 /* MERMemoryCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERMemoryCard.h; sourceTree = "<group>"; };
+		5EB10CEF1BCE5E5C00CEA052 /* MERMemoryCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERMemoryCard.m; sourceTree = "<group>"; };
+		5EB10CF11BCE5E7F00CEA052 /* MERSetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERSetCard.h; sourceTree = "<group>"; };
+		5EB10CF21BCE5E7F00CEA052 /* MERSetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERSetCard.m; sourceTree = "<group>"; };
+		5EB10CF41BCE61A100CEA052 /* MERBaseCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERBaseCard.h; sourceTree = "<group>"; };
+		5EB10CF51BCE61A100CEA052 /* MERBaseCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERBaseCard.m; sourceTree = "<group>"; };
+		5EB10CF71BCE715C00CEA052 /* MERMemoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERMemoryVC.h; sourceTree = "<group>"; };
+		5EB10CF81BCE715C00CEA052 /* MERMemoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERMemoryVC.m; sourceTree = "<group>"; };
+		5EB10CFA1BCE79D000CEA052 /* MERSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERSetVC.h; sourceTree = "<group>"; };
+		5EB10CFB1BCE79D000CEA052 /* MERSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERSetVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +116,8 @@
 		5EB10CB51BCE5B8A00CEA052 /* Task1234 */ = {
 			isa = PBXGroup;
 			children = (
+				5EB10CEA1BCE5D7100CEA052 /* Set */,
+				5EB10CE91BCE5D6500CEA052 /* Memory */,
 				5EB10CBC1BCE5B8A00CEA052 /* ViewController.h */,
 				5EB10CBD1BCE5B8A00CEA052 /* ViewController.m */,
 				5EB10CBF1BCE5B8A00CEA052 /* Main.storyboard */,
@@ -108,6 +125,8 @@
 				5EB10CC41BCE5B8A00CEA052 /* LaunchScreen.storyboard */,
 				5EB10CC71BCE5B8B00CEA052 /* Info.plist */,
 				5EB10CB61BCE5B8A00CEA052 /* Supporting Files */,
+				5EB10CF41BCE61A100CEA052 /* MERBaseCard.h */,
+				5EB10CF51BCE61A100CEA052 /* MERBaseCard.m */,
 			);
 			path = Task1234;
 			sourceTree = "<group>";
@@ -138,6 +157,28 @@
 				5EB10CDD1BCE5B8B00CEA052 /* Info.plist */,
 			);
 			path = Task1234UITests;
+			sourceTree = "<group>";
+		};
+		5EB10CE91BCE5D6500CEA052 /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				5EB10CEE1BCE5E5C00CEA052 /* MERMemoryCard.h */,
+				5EB10CEF1BCE5E5C00CEA052 /* MERMemoryCard.m */,
+				5EB10CF71BCE715C00CEA052 /* MERMemoryVC.h */,
+				5EB10CF81BCE715C00CEA052 /* MERMemoryVC.m */,
+			);
+			name = Memory;
+			sourceTree = "<group>";
+		};
+		5EB10CEA1BCE5D7100CEA052 /* Set */ = {
+			isa = PBXGroup;
+			children = (
+				5EB10CF11BCE5E7F00CEA052 /* MERSetCard.h */,
+				5EB10CF21BCE5E7F00CEA052 /* MERSetCard.m */,
+				5EB10CFA1BCE79D000CEA052 /* MERSetVC.h */,
+				5EB10CFB1BCE79D000CEA052 /* MERSetVC.m */,
+			);
+			name = Set;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +314,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EB10CBE1BCE5B8A00CEA052 /* ViewController.m in Sources */,
+				5EB10CF61BCE61A100CEA052 /* MERBaseCard.m in Sources */,
 				5EB10CBB1BCE5B8A00CEA052 /* AppDelegate.m in Sources */,
+				5EB10CF01BCE5E5C00CEA052 /* MERMemoryCard.m in Sources */,
+				5EB10CF91BCE715C00CEA052 /* MERMemoryVC.m in Sources */,
 				5EB10CB81BCE5B8A00CEA052 /* main.m in Sources */,
+				5EB10CFC1BCE79D000CEA052 /* MERSetVC.m in Sources */,
+				5EB10CF31BCE5E7F00CEA052 /* MERSetCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +548,7 @@
 				5EB10CE21BCE5B8B00CEA052 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5EB10CE31BCE5B8B00CEA052 /* Build configuration list for PBXNativeTarget "Task1234Tests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +557,7 @@
 				5EB10CE51BCE5B8B00CEA052 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5EB10CE61BCE5B8B00CEA052 /* Build configuration list for PBXNativeTarget "Task1234UITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +566,7 @@
 				5EB10CE81BCE5B8B00CEA052 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
