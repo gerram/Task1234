@@ -34,5 +34,54 @@
     [self setNeedsDisplay];
 }
 
+#pragma mark - Drawing
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    
+    [self drawCorners];
+}
+
+- (CGFloat)cornerOffset
+{
+    return [super cornerRadius] / 3.0;
+}
+
+- (void)drawCorners
+{
+    // Size of font depends on corner, corner depens on rect...
+    UIFont *cornerFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    cornerFont = [cornerFont fontWithSize:cornerFont.pointSize * [super cornerScaleFactor]];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    NSString *pip = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit];
+    NSAttributedString *pipAttr = [[NSAttributedString alloc] initWithString:pip attributes:@{ NSFontAttributeName: cornerFont, NSParagraphStyleAttributeName: paragraphStyle}];
+    
+    CGRect pipBound;
+    pipBound.origin = CGPointMake([self cornerOffset], [self cornerOffset]);
+    pipBound.size = pipAttr.size;
+    [pipAttr drawInRect:pipBound];
+    
+    [self pushContexCTMRotate180];
+    [pipAttr drawInRect:pipBound];
+    [self popContext];
+}
+
+- (void)pushContexCTMRotate180
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    CGContextTranslateCTM(context, self.bounds.size.width, self.bounds.size.height);
+    CGContextRotateCTM(context, M_PI);
+}
+
+- (void)popContext
+{
+    CGContextRestoreGState(UIGraphicsGetCurrentContext());
+}
+
+
 
 @end

@@ -7,9 +7,10 @@
 //
 
 #import "MERMemoryVC.h"
+#import "MERMemoryCard.h"
 
 @interface MERMemoryVC ()
-
+@property (weak, nonatomic) IBOutlet MERMemoryCard *myCard;
 @end
 
 @implementation MERMemoryVC
@@ -17,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.myCard.suit = @"♥︎";
+    self.myCard.rank = 5;
+
+
 }
 
 - (void)didReceiveMemoryWarning {
