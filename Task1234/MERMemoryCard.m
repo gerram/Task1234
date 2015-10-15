@@ -7,6 +7,13 @@
 //
 
 #import "MERMemoryCard.h"
+#import "MERBaseCard.h"
+
+@interface MERBaseCard ()
+- (CGFloat)cornerScaleFactor;
+- (CGFloat)cornerRadius;
+@end
+
 
 @implementation MERMemoryCard
 
@@ -39,7 +46,13 @@
 {
     [super drawRect:rect];
     
-    [self drawCorners];
+    if (self.faceUP) {
+        [self drawCorners];
+        
+    } else {
+        //TODO: To make AspectFit mode for this image
+        [[UIImage imageNamed:@"cardback"] drawInRect:self.bounds];
+    }
 }
 
 - (CGFloat)cornerOffset

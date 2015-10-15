@@ -10,7 +10,5 @@
 
 @interface MERBaseCard : UIView
 
-- (CGFloat)cornerScaleFactor;
-- (CGFloat)cornerRadius;
 
 @end

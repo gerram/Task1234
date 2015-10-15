@@ -11,6 +11,7 @@
 
 @interface MERMemoryVC ()
 @property (weak, nonatomic) IBOutlet MERMemoryCard *myCard;
+@property (weak, nonatomic) IBOutlet MERMemoryCard *myCard2;
 @end
 
 @implementation MERMemoryVC
@@ -19,10 +20,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //@"♥︎, ♦︎, ♣︎, ♠︎";
+    
     self.myCard.suit = @"♥︎";
     self.myCard.rank = 5;
-
-
+    self.myCard.faceUP = TRUE;
+    
 }
 
 - (void)didReceiveMemoryWarning {
