@@ -1,26 +1,22 @@
 //
-//  MERSetVC.m
+//  MERScoresVC.m
 //  Task1234
 //
-//  Created by George Malushkin on 14/10/15.
+//  Created by George Malushkin on 16/10/15.
 //  Copyright © 2015 George Malushkin. All rights reserved.
 //
 
-#import "MERSetVC.h"
-#import "MERSetCard.h"
+#import "MERScoresVC.h"
 
-@interface MERSetVC ()
-@property (weak, nonatomic) IBOutlet MERSetCard *setCard;
+@interface MERScoresVC ()
 
 @end
 
-@implementation MERSetVC
+@implementation MERScoresVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.setCard.rank = 3;
 }
 
 - (void)didReceiveMemoryWarning {

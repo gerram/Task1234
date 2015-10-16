@@ -40,6 +40,26 @@
             </objects>
             <point key="canvasLocation" x="894" y="-399"/>
         </scene>
+        <!--Scores-->
+        <scene sceneID="j23-8o-l6y">
+            <objects>
+                <viewController title="Scores" id="dPC-Kt-4kI" customClass="MERScoresVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pSR-uy-gBO"/>
+                        <viewControllerLayoutGuide type="bottom" id="2cY-65-TIa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QOT-CV-dxO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Scores" id="uIc-vu-KRa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2nw-mH-eL8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="1093"/>
+        </scene>
         <!--Set-->
         <scene sceneID="uCb-g6-a2l">
             <objects>
@@ -62,6 +82,9 @@
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Set" id="4cR-ri-fnZ"/>
+                    <connections>
+                        <outlet property="setCard" destination="tVm-Jv-kBW" id="ePy-K9-Kmm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNu-CA-19F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,6 +103,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="IiD-4N-OT9"/>
                         <segue destination="9D9-FP-i3B" kind="relationship" relationship="viewControllers" id="ybF-ta-0Z2"/>
+                        <segue destination="dPC-Kt-4kI" kind="relationship" relationship="viewControllers" id="z8c-Go-Ozv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjZ-hy-KeD" userLabel="First Responder" sceneMemberID="firstResponder"/>

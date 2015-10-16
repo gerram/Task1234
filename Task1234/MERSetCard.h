@@ -10,4 +10,8 @@
 
 @interface MERSetCard : MERBaseCard
 
+@property (nonatomic, strong) NSString *shape;
+@property (nonatomic, strong) NSString *fill;
+@property (nonatomic, assign) NSUInteger rank;
+
 @end
