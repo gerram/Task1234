@@ -7,11 +7,10 @@
 //
 
 #import "MERSetVC.h"
-#import "MERSetCard.h"
+#import "MERSetCardV.h"
 
 @interface MERSetVC ()
-@property (weak, nonatomic) IBOutlet MERSetCard *setCard;
-
+@property (weak, nonatomic) IBOutlet MERSetCardV *setCard;
 @end
 
 @implementation MERSetVC
@@ -21,6 +20,7 @@
     // Do any additional setup after loading the view.
     
     self.setCard.rank = 3;
+    self.setCard.shape = kDiamond;
 }
 
 - (void)didReceiveMemoryWarning {

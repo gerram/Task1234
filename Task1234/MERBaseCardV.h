@@ -1,5 +1,5 @@
 //
-//  MERBaseCard.h
+//  MERBaseCardV.h
 //  Task1234
 //
 //  Created by George Malushkin on 14/10/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MERBaseCard : UIView
+@interface MERBaseCardV : UIView
 
 
 @end

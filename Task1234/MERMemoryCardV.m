@@ -1,21 +1,21 @@
 //
-//  MERMemoryCard.m
+//  MERMemoryCardV.m
 //  Task1234
 //
 //  Created by George Malushkin on 14/10/15.
 //  Copyright © 2015 George Malushkin. All rights reserved.
 //
 
-#import "MERMemoryCard.h"
-#import "MERBaseCard.h"
+#import "MERMemoryCardV.h"
+#import "MERBaseCardV.h"
 
-@interface MERBaseCard ()
+@interface MERBaseCardV ()
 - (CGFloat)cornerScaleFactor;
 - (CGFloat)cornerRadius;
 @end
 
 
-@implementation MERMemoryCard
+@implementation MERMemoryCardV
 
 #pragma mark - Properties
 - (void)setRank:(NSUInteger)rank

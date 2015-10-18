@@ -7,11 +7,12 @@
 //
 
 #import "MERMemoryVC.h"
-#import "MERMemoryCard.h"
+#import "MERMemoryCardV.h"
 
 @interface MERMemoryVC ()
-@property (weak, nonatomic) IBOutlet MERMemoryCard *myCard;
-@property (weak, nonatomic) IBOutlet MERMemoryCard *myCard2;
+@property (weak, nonatomic) IBOutlet MERMemoryCardV *myCard;
+@property (weak, nonatomic) IBOutlet MERMemoryCardV *myCard2;
+
 @end
 
 @implementation MERMemoryVC

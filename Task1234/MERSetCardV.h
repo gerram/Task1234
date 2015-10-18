@@ -1,14 +1,14 @@
 //
-//  MERSetCard.h
+//  MERSetCardV.h
 //  Task1234
 //
 //  Created by George Malushkin on 14/10/15.
 //  Copyright © 2015 George Malushkin. All rights reserved.
 //
 
-#import "MERBaseCard.h"
+#import "MERBaseCardV.h"
 
-@interface MERSetCard : MERBaseCard
+@interface MERSetCardV : MERBaseCardV
 
 @property (nonatomic, strong) NSString *shape;
 @property (nonatomic, strong) NSString *fill;

@@ -1,16 +1,16 @@
 //
-//  MERSetCard.m
+//  MERSetCardV.m
 //  Task1234
 //
 //  Created by George Malushkin on 14/10/15.
 //  Copyright © 2015 George Malushkin. All rights reserved.
 //
 
-#import "MERSetCard.h"
+#import "MERSetCardV.h"
 
 static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 
-@implementation MERSetCard
+@implementation MERSetCardV
 
 #pragma mark - Properties
 - (void)setShape:(NSString *)shape
@@ -52,13 +52,13 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
     while (i <= _rank) {
         switch (i) {
             case 1:
-                [self pushContextCTMTranslateUp:0 andLeft:[self offsetShapeHorizontal]];
+                [self pushContextCTMTranslateX:[self offsetShapeHorizontal] andY:0];
                 
-                if ([_shape isEqualToString:@"diamond"]) {
+                if ([_shape isEqualToString:kDiamond]) {
                     [self drawShapeDiamond];
-                } else if ([_shape isEqualToString:@"twix"]) {
+                } else if ([_shape isEqualToString:kTwix]) {
                     [self drawShapeTwix];
-                } else if ([_shape isEqualToString:@"wing"]) {
+                } else if ([_shape isEqualToString:kWing]) {
                     [self drawShapeWing];
                 }
                 
@@ -66,13 +66,13 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
                 break;
                 
             case 2:
-                [self pushContextCTMTranslateUp:60.0 andLeft:[self offsetShapeHorizontal]];
+                [self pushContextCTMTranslateX:[self offsetShapeHorizontal] andY:60.0];
                 
-                if ([_shape isEqualToString:@"diamond"]) {
+                if ([_shape isEqualToString:kDiamond]) {
                     [self drawShapeDiamond];
-                } else if ([_shape isEqualToString:@"twix"]) {
+                } else if ([_shape isEqualToString:kTwix]) {
                     [self drawShapeTwix];
-                } else if ([_shape isEqualToString:@"wing"]) {
+                } else if ([_shape isEqualToString:kWing]) {
                     [self drawShapeWing];
                 }
                 
@@ -80,13 +80,13 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
                 break;
                 
             case 3:
-                [self pushContextCTMTranslateUp:120.0 andLeft:[self offsetShapeHorizontal]];
+                [self pushContextCTMTranslateX:[self offsetShapeHorizontal] andY:120.0];
                 
-                if ([_shape isEqualToString:@"diamond"]) {
+                if ([_shape isEqualToString:kDiamond]) {
                     [self drawShapeDiamond];
-                } else if ([_shape isEqualToString:@"twix"]) {
+                } else if ([_shape isEqualToString:kTwix]) {
                     [self drawShapeTwix];
-                } else if ([_shape isEqualToString:@"wing"]) {
+                } else if ([_shape isEqualToString:kWing]) {
                     [self drawShapeWing];
                 }
                 
@@ -122,6 +122,7 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
     CGPathCloseSubpath(path);
 
     shape.path = path;
+    CGPathRelease(path);
     
     //[self.layer insertSublayer:shape atIndex:0];
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -158,11 +159,11 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
     
 }
 
-- (void)pushContextCTMTranslateUp:(CGFloat)shiftUp andLeft:(CGFloat)shiftLeft
+- (void)pushContextCTMTranslateX:(CGFloat)tX andY:(CGFloat)tY
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
-    CGContextTranslateCTM(context, shiftLeft, shiftUp);
+    CGContextTranslateCTM(context, tX, tY);
 }
 
 - (void)popContext
