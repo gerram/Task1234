@@ -10,10 +10,7 @@
 #import "MERMemoryCardV.h"
 
 @interface MERMemoryVC ()
-//@property (weak, nonatomic) IBOutlet MERMemoryCardV *myCard;
-//@property (weak, nonatomic) IBOutlet MERMemoryCardV *myCard2;
 @property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
-
 @end
 
 @implementation MERMemoryVC
@@ -30,6 +27,13 @@
     self.myCard.faceUP = TRUE;
      */
     
+    for (MERMemoryCardV *card in self.memoryCards) {
+        if ([card isKindOfClass:[MERMemoryCardV class]]) {
+            card.suit = @"♥︎";
+            card.rank = 5;
+            card.faceUP = TRUE;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,5 +50,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

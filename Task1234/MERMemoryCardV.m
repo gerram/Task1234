@@ -95,6 +95,13 @@
     CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
+#pragma mark - Gestures
+// overriden
+- (void)MERCardRespondToTapGesture:(UITapGestureRecognizer *)recognizer
+{
+    self.faceUP = !self.faceUP;
+}
+
 
 
 @end

@@ -35,8 +35,17 @@ static const CGFloat BASESIZE_WIDTH = 100.0;
     self.backgroundColor = nil;
     self.opaque = FALSE;
     self.contentMode = UIViewContentModeRedraw;
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(MERCardRespondToTapGesture:)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:tapRecognizer];
 }
 
+// To override
+- (void)MERCardRespondToTapGesture:(UITapGestureRecognizer *)recognizer
+{
+    NSLog(@"I was tapped!!!");
+}
 
 #pragma mark - Drawing
 - (CGFloat)widthScaleFactor
@@ -75,6 +84,7 @@ static const CGFloat BASESIZE_WIDTH = 100.0;
     [[UIColor blackColor] setStroke];
     [roundedRect stroke];
 }
+
 
 
 
