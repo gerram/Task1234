@@ -19,8 +19,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.setCard.rank = 3;
-    self.setCard.shape = kDiamond;
+    self.setCard.rank = 1;
+    //self.setCard.shape = kDiamond;
+    self.setCard.shape = kTwix;
 }
 
 - (void)didReceiveMemoryWarning {

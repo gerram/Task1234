@@ -100,13 +100,18 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
     }
 }
 
+- (CGRect)shapeRect
+{
+    //TODO: To make autosized from based width and height consts
+    // Create 1/3 sizes box for shape
+    return CGRectMake(0, 0, self.bounds.size.width * SHAPES_BOUNDS_PERCENTAGE, self.bounds.size.height / 3 * SHAPES_BOUNDS_PERCENTAGE);
+}
+
+
 - (void)drawShapeDiamond
 {
-    // Make 1/3 sizes box for shape
-    CGRect shapeRect = CGRectMake(0, 0, self.bounds.size.width * SHAPES_BOUNDS_PERCENTAGE, self.bounds.size.height / 3 * SHAPES_BOUNDS_PERCENTAGE);
-    
     CAShapeLayer *shape = [[CAShapeLayer alloc] init];
-    shape.frame = shapeRect;
+    shape.frame = [self shapeRect];
     shape.lineWidth = 2.0;
     shape.strokeColor = [UIColor greenColor].CGColor;
     shape.fillColor = [UIColor grayColor].CGColor;
@@ -151,7 +156,39 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 
 - (void)drawShapeTwix
 {
+    CAShapeLayer *shape = [[CAShapeLayer alloc] init];
+    shape.frame = [self shapeRect];
+//    shape.lineWidth = 2.0;
+//    shape.strokeColor = [UIColor greenColor].CGColor;
+//    shape.fillColor = [UIColor grayColor].CGColor;
+//    
+    CGFloat width = shape.bounds.size.width;
+    CGFloat height = shape.bounds.size.height;
     
+//
+//    CGMutablePathRef path = CGPathCreateMutable();
+//    CGPathMoveToPoint(path, nil, 0, height / 2.0);
+//    
+//    CGPathCloseSubpath(path);
+//    
+//    shape.path = path;
+//    CGPathRelease(path);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    //CGMutablePathRef path = CGPathCreateMutable();
+    //UIBezierPath *bPath = [UIBezierPath bezierPathWithCGPath:path];
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, 10, 0);
+    CGContextAddLineToPoint(context, 40, 0);
+    CGContextAddQuadCurveToPoint(context, 60, 20, 40, 40);
+    CGContextAddLineToPoint(context, 10, 40);
+    CGContextAddQuadCurveToPoint(context, 0, 20, 10, 0);
+    CGContextClosePath(context);
+    CGContextStrokePath(context);
+    [self.layer renderInContext:context];
+    
+    
+    //[shape renderInContext:context];
 }
 
 - (void)drawShapeWing

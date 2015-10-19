@@ -9,7 +9,8 @@
 #import "MERBaseCardV.h"
 
 static const CGFloat CORNER_RADIUS = 10.0;
-static const CGFloat CORNER_BASESIZE_HEIGHT = 133.0;
+static const CGFloat BASESIZE_HEIGHT = 133.0;
+static const CGFloat BASESIZE_WIDTH = 100.0;
 
 
 
@@ -40,7 +41,7 @@ static const CGFloat CORNER_BASESIZE_HEIGHT = 133.0;
 #pragma mark - Drawing
 - (CGFloat)cornerScaleFactor
 {
-    return self.bounds.size.height / CORNER_BASESIZE_HEIGHT;
+    return self.bounds.size.height / BASESIZE_HEIGHT;
 }
 
 - (CGFloat)cornerRadius
