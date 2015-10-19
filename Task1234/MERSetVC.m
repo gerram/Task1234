@@ -10,9 +10,10 @@
 #import "MERSetCardV.h"
 
 @interface MERSetVC ()
-@property (weak, nonatomic) IBOutlet MERSetCardV *setCard;
-@property (weak, nonatomic) IBOutlet MERSetCardV *setCardTwix;
-@property (weak, nonatomic) IBOutlet MERSetCardV *setCardWing;
+//@property (weak, nonatomic) IBOutlet MERSetCardV *setCard;
+//@property (weak, nonatomic) IBOutlet MERSetCardV *setCardTwix;
+//@property (weak, nonatomic) IBOutlet MERSetCardV *setCardWing;
+@property (strong, nonatomic) IBOutletCollection(MERSetCardV) NSArray *setCards;
 @end
 
 @implementation MERSetVC
@@ -28,6 +29,7 @@
     // @[@"full", @"hatch", @"blank"];
     
     
+    /*
     self.setCard.rank = 3;
     self.setCard.suit = @"red";
     self.setCard.shape = kDiamond;
@@ -42,6 +44,7 @@
     self.setCardWing.suit = @"red";
     self.setCardWing.shape = kWing;
     self.setCardWing.fill = kBlank;
+     */
 }
 
 - (void)didReceiveMemoryWarning {

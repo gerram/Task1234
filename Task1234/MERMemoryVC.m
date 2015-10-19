@@ -10,8 +10,9 @@
 #import "MERMemoryCardV.h"
 
 @interface MERMemoryVC ()
-@property (weak, nonatomic) IBOutlet MERMemoryCardV *myCard;
-@property (weak, nonatomic) IBOutlet MERMemoryCardV *myCard2;
+//@property (weak, nonatomic) IBOutlet MERMemoryCardV *myCard;
+//@property (weak, nonatomic) IBOutlet MERMemoryCardV *myCard2;
+@property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
 
 @end
 
@@ -23,9 +24,11 @@
     
     //@"♥︎, ♦︎, ♣︎, ♠︎";
     
+    /*
     self.myCard.suit = @"♥︎";
     self.myCard.rank = 5;
     self.myCard.faceUP = TRUE;
+     */
     
 }
 
