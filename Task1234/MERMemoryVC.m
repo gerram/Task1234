@@ -34,6 +34,9 @@
             card.faceUP = TRUE;
         }
     }
+    
+    NSArray *fullCardArray = [self generateFullCardArray];
+    NSArray *randomCardArray = [self generateRandomCardArrayFrom:fullCardArray];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +53,37 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Model
+- (NSArray *)generateFullCardArray
+{
+    NSArray *suits = @[@"♥︎", @"♦︎", @"♣︎", @"♠︎"];
+    NSArray *ranks = @[@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
+    NSMutableArray *fullArray = [@[] mutableCopy];
+    
+    for (NSString *suit in suits) {
+        for (NSString *rank in ranks) {
+            [fullArray addObject:[suit stringByAppendingString:rank]];
+        }
+    }
+    
+    return fullArray;
+}
+
+// Not good, maybe to use generator
+- (NSArray *)generateRandomCardArrayFrom:(NSArray *)sourceArray
+{
+    NSMutableArray *fullArray = [@[] mutableCopy];
+    NSMutableArray *source = [sourceArray mutableCopy];
+    
+    while ([source count] > 0) {
+        NSString *tmpObj = [source objectAtIndex:arc4random() % [source count]];
+        [fullArray addObject:tmpObj];
+        [source removeObject:tmpObj];
+    }
+    
+    return fullArray;
+}
 
 
 
