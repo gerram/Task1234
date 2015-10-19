@@ -7,8 +7,14 @@
 //
 
 #import "MERSetCardV.h"
+#import "MERBaseCardV.h"
 
 static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
+
+@interface MERBaseCardV ()
+- (CGFloat)widthScaleFactor;
+- (CGFloat)heightScaleFactor;
+@end
 
 @implementation MERSetCardV
 
@@ -23,6 +29,31 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 {
     _rank = rank;
     [self setNeedsDisplay];
+}
+
+- (void)setSuit:(NSString *)suit
+{
+    _suit = suit;
+    [self setNeedsDisplay];
+}
+
+- (void)setFill:(NSString *)fill
+{
+    _fill = fill;
+    [self setNeedsDisplay];
+}
+
+- (UIColor *)suitUIColor:(NSString *)colorString
+{
+    if ([colorString isEqualToString:kGreen]) {
+        return [UIColor greenColor];
+    } else if ([colorString isEqualToString:kBlue]) {
+        return [UIColor blueColor];
+    } else if ([colorString isEqualToString:kRed]) {
+        return [UIColor redColor];
+    } else {
+        return [self.window tintColor];
+    }
 }
 
 #pragma mark - Drawing
@@ -66,7 +97,7 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
                 break;
                 
             case 2:
-                [self pushContextCTMTranslateX:[self offsetShapeHorizontal] andY:60.0];
+                [self pushContextCTMTranslateX:[self offsetShapeHorizontal] andY:[self shapeRect].size.height];
                 
                 if ([_shape isEqualToString:kDiamond]) {
                     [self drawShapeDiamond];
@@ -80,7 +111,7 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
                 break;
                 
             case 3:
-                [self pushContextCTMTranslateX:[self offsetShapeHorizontal] andY:120.0];
+                [self pushContextCTMTranslateX:[self offsetShapeHorizontal] andY:[self shapeRect].size.height * 2];
                 
                 if ([_shape isEqualToString:kDiamond]) {
                     [self drawShapeDiamond];
@@ -102,28 +133,46 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 
 - (CGRect)shapeRect
 {
-    //TODO: To make autosized from based width and height consts
+#pragma TODO: To make autosized from based width and height consts
     // Create 1/3 sizes box for shape
-    return CGRectMake(0, 0, self.bounds.size.width * SHAPES_BOUNDS_PERCENTAGE, self.bounds.size.height / 3 * SHAPES_BOUNDS_PERCENTAGE);
+    return CGRectMake(0, 0, self.bounds.size.width * SHAPES_BOUNDS_PERCENTAGE, self.bounds.size.height * SHAPES_BOUNDS_PERCENTAGE / 3);
 }
 
 
-- (void)drawShapeDiamond
+- (CAShapeLayer *)baseShapeLayer
 {
     CAShapeLayer *shape = [[CAShapeLayer alloc] init];
     shape.frame = [self shapeRect];
-    shape.lineWidth = 2.0;
-    shape.strokeColor = [UIColor greenColor].CGColor;
-    shape.fillColor = [UIColor grayColor].CGColor;
+    shape.lineWidth = 1.0;
+    shape.strokeColor = [self suitUIColor:_suit].CGColor;
     
-    CGFloat width = shape.bounds.size.width;
-    CGFloat height = shape.bounds.size.height;
+    if ([_fill isEqualToString:kFull]) {
+        shape.fillColor = [self suitUIColor:_suit].CGColor;
+    
+    } else if ([_fill isEqualToString:kHatch]) {
+#pragma TODO: To make with CGPatterns
+        shape.fillColor = [[self suitUIColor:_suit] colorWithAlphaComponent:0.33].CGColor;
+    
+    } else if ([_fill isEqualToString:kBlank]) {
+        shape.fillColor = [UIColor whiteColor].CGColor;
+    
+    } else {
+       //
+    }
+    
+    return shape;
+}
+
+- (void)drawShapeDiamond
+{
+    CAShapeLayer *shape = [self baseShapeLayer];
+    CGFloat scaleFactor = shape.bounds.size.width / 100.0;
     
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, nil, 0, height / 2.0);
-    CGPathAddLineToPoint(path, nil, width / 2.0, 0);
-    CGPathAddLineToPoint(path, nil, width, height / 2.0);
-    CGPathAddLineToPoint(path, nil, width / 2, height);
+    CGPathMoveToPoint(path, nil, 0, 20 * scaleFactor); // Left point
+    CGPathAddLineToPoint(path, nil, 50 * scaleFactor, 0); // Top point
+    CGPathAddLineToPoint(path, nil, 100 * scaleFactor, 20 * scaleFactor); // Right point
+    CGPathAddLineToPoint(path, nil, 50 * scaleFactor, 40 * scaleFactor); // Bottom point
     CGPathCloseSubpath(path);
 
     shape.path = path;
@@ -156,44 +205,45 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 
 - (void)drawShapeTwix
 {
-    CAShapeLayer *shape = [[CAShapeLayer alloc] init];
-    shape.frame = [self shapeRect];
-//    shape.lineWidth = 2.0;
-//    shape.strokeColor = [UIColor greenColor].CGColor;
-//    shape.fillColor = [UIColor grayColor].CGColor;
-//    
-    CGFloat width = shape.bounds.size.width;
-    CGFloat height = shape.bounds.size.height;
+    CAShapeLayer *shape = [self baseShapeLayer];
+    CGFloat scaleFactor = shape.bounds.size.width / 100.0;
     
-//
-//    CGMutablePathRef path = CGPathCreateMutable();
-//    CGPathMoveToPoint(path, nil, 0, height / 2.0);
-//    
-//    CGPathCloseSubpath(path);
-//    
-//    shape.path = path;
-//    CGPathRelease(path);
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, nil, 20 * scaleFactor, 0); // Left Top point
+    CGPathAddLineToPoint(path, nil, 80 * scaleFactor, 0); // Right Top point
+    CGPathAddQuadCurveToPoint(path, nil, 100 * scaleFactor, 20 * scaleFactor, 80 * scaleFactor, 40 * scaleFactor); // Right bottom point
+    CGPathAddLineToPoint(path, nil, 20 * scaleFactor, 40 * scaleFactor); // Left bottom point
+    CGPathAddQuadCurveToPoint(path, nil, 0, 20 * scaleFactor, 20 * scaleFactor, 0); // for closing with bezier
+    CGPathCloseSubpath(path);
+
+    shape.path = path;
+    CGPathRelease(path);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    //CGMutablePathRef path = CGPathCreateMutable();
-    //UIBezierPath *bPath = [UIBezierPath bezierPathWithCGPath:path];
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, 10, 0);
-    CGContextAddLineToPoint(context, 40, 0);
-    CGContextAddQuadCurveToPoint(context, 60, 20, 40, 40);
-    CGContextAddLineToPoint(context, 10, 40);
-    CGContextAddQuadCurveToPoint(context, 0, 20, 10, 0);
-    CGContextClosePath(context);
-    CGContextStrokePath(context);
-    [self.layer renderInContext:context];
-    
-    
-    //[shape renderInContext:context];
+    [shape renderInContext:context];
 }
 
 - (void)drawShapeWing
 {
+    CAShapeLayer *shape = [self baseShapeLayer];
+    CGFloat scaleFactor = shape.bounds.size.width / 100.0;
     
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, nil, 0, 60 * scaleFactor); // Bottom Left point
+    CGPathAddQuadCurveToPoint(path, nil, 0, 20 * scaleFactor, 20 * scaleFactor, 20 * scaleFactor);
+    CGPathAddLineToPoint(path, nil, 80 * scaleFactor, 20 * scaleFactor);
+    CGPathAddQuadCurveToPoint(path, nil, 100 * scaleFactor, 20 * scaleFactor, 100 * scaleFactor, 0); // Top Right point
+    CGPathAddQuadCurveToPoint(path, nil, 100 * scaleFactor, 40 * scaleFactor, 80 * scaleFactor, 40 * scaleFactor);
+    CGPathAddLineToPoint(path, nil, 20 * scaleFactor, 40 * scaleFactor);
+    CGPathAddQuadCurveToPoint(path, nil, 0, 40 * scaleFactor, 0, 60 * scaleFactor);
+    
+    CGPathCloseSubpath(path);
+
+    shape.path = path;
+    CGPathRelease(path);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [shape renderInContext:context];   
 }
 
 - (void)pushContextCTMTranslateX:(CGFloat)tX andY:(CGFloat)tY

@@ -11,6 +11,8 @@
 
 @interface MERSetVC ()
 @property (weak, nonatomic) IBOutlet MERSetCardV *setCard;
+@property (weak, nonatomic) IBOutlet MERSetCardV *setCardTwix;
+@property (weak, nonatomic) IBOutlet MERSetCardV *setCardWing;
 @end
 
 @implementation MERSetVC
@@ -19,9 +21,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.setCard.rank = 1;
-    //self.setCard.shape = kDiamond;
-    self.setCard.shape = kTwix;
+    // Suits
+    // @[@"green", @"blue", @"red"];
+    
+    // Fills
+    // @[@"full", @"hatch", @"blank"];
+    
+    
+    self.setCard.rank = 3;
+    self.setCard.suit = @"red";
+    self.setCard.shape = kDiamond;
+    self.setCard.fill = kFull;
+    
+    self.setCardTwix.rank = 3;
+    self.setCardTwix.suit = @"red";
+    self.setCardTwix.shape = kTwix;
+    self.setCardTwix.fill = kHatch;
+    
+    self.setCardWing.rank = 3;
+    self.setCardWing.suit = @"red";
+    self.setCardWing.shape = kWing;
+    self.setCardWing.fill = kBlank;
 }
 
 - (void)didReceiveMemoryWarning {

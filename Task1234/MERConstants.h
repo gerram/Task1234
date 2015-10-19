@@ -11,8 +11,20 @@
 
 #import <Foundation/Foundation.h>
 
+// Shapes
 #define kDiamond @"diamond"
 #define kTwix @"twix"
 #define kWing @"wing"
+
+// Colors
+#define kGreen @"green"
+#define kBlue @"blue"
+#define kRed  @"red"
+
+// Fills
+#define kFull @"full"
+#define kHatch @"hatch"
+#define kBlank @"blank"
+
 
 #endif /* MERConstants_h */

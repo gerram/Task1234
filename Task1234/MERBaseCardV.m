@@ -39,8 +39,19 @@ static const CGFloat BASESIZE_WIDTH = 100.0;
 
 
 #pragma mark - Drawing
+- (CGFloat)widthScaleFactor
+{
+    return self.bounds.size.width / BASESIZE_WIDTH;
+}
+
+- (CGFloat)heightScaleFactor
+{
+    return self.bounds.size.height / BASESIZE_HEIGHT;
+}
+
 - (CGFloat)cornerScaleFactor
 {
+#pragma MARK: maybe check and the widht too?
     return self.bounds.size.height / BASESIZE_HEIGHT;
 }
 

@@ -73,7 +73,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tVm-Jv-kBW" customClass="MERSetCardV">
-                                <rect key="frame" x="94" y="36" width="152" height="190"/>
+                                <rect key="frame" x="20" y="28" width="150" height="200"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLQ-ib-Y98" customClass="MERSetCardV">
+                                <rect key="frame" x="190" y="28" width="150" height="200"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xf4-nQ-Vhm" customClass="MERSetCardV">
+                                <rect key="frame" x="20" y="250" width="150" height="200"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -84,6 +94,8 @@
                     <tabBarItem key="tabBarItem" title="Set" id="4cR-ri-fnZ"/>
                     <connections>
                         <outlet property="setCard" destination="tVm-Jv-kBW" id="bd2-dg-qab"/>
+                        <outlet property="setCardTwix" destination="tLQ-ib-Y98" id="U3V-3f-j67"/>
+                        <outlet property="setCardWing" destination="xf4-nQ-Vhm" id="kAu-lF-qWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNu-CA-19F" userLabel="First Responder" sceneMemberID="firstResponder"/>
