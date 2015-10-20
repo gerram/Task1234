@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface MERBaseDeck : NSObject
-@property (atomic, strong) NSMutableArray *playingCardDeck;
+- (NSString *)drawRandomCard;
 @end

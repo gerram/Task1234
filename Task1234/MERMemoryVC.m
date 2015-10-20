@@ -8,35 +8,40 @@
 
 #import "MERMemoryVC.h"
 #import "MERMemoryCardV.h"
+#import "MERMemoryDeck.h"
 
 @interface MERMemoryVC ()
 @property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
+@property (strong, nonatomic) MERMemoryDeck *deck;
 @end
 
 @implementation MERMemoryVC
+
+- (MERMemoryDeck *)deck
+{
+    if (!_deck) {
+        _deck = [[MERMemoryDeck alloc] init];
+    }
+    return _deck;
+}
+
+
+- (void)drawPlayingCards
+{
+    for (MERMemoryCardV *card in _memoryCards) {
+        NSString *cardInString = [self.deck drawRandomCard];
+        card.suit = [cardInString substringWithRange:NSMakeRange(0, 1)];
+        card.rank = [cardInString substringWithRange:NSMakeRange(1, cardInString.length - 1)];
+        card.faceUP = FALSE;
+    }
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //@"♥︎, ♦︎, ♣︎, ♠︎";
-    
-    /*
-    self.myCard.suit = @"♥︎";
-    self.myCard.rank = 5;
-    self.myCard.faceUP = TRUE;
-     */
-    
-    for (MERMemoryCardV *card in self.memoryCards) {
-        if ([card isKindOfClass:[MERMemoryCardV class]]) {
-            card.suit = @"♥︎";
-            card.rank = 5;
-            card.faceUP = TRUE;
-        }
-    }
-    
-    NSArray *fullCardArray = [self generateFullCardArray];
-    NSArray *randomCardArray = [self generateRandomCardArrayFrom:fullCardArray];
+    [self drawPlayingCards];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,36 +59,36 @@
 }
 */
 
-#pragma mark - Model
-- (NSArray *)generateFullCardArray
-{
-    NSArray *suits = @[@"♥︎", @"♦︎", @"♣︎", @"♠︎"];
-    NSArray *ranks = @[@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
-    NSMutableArray *fullArray = [@[] mutableCopy];
-    
-    for (NSString *suit in suits) {
-        for (NSString *rank in ranks) {
-            [fullArray addObject:[suit stringByAppendingString:rank]];
-        }
-    }
-    
-    return fullArray;
-}
-
-// Not good, maybe to use generator
-- (NSArray *)generateRandomCardArrayFrom:(NSArray *)sourceArray
-{
-    NSMutableArray *fullArray = [@[] mutableCopy];
-    NSMutableArray *source = [sourceArray mutableCopy];
-    
-    while ([source count] > 0) {
-        NSString *tmpObj = [source objectAtIndex:arc4random() % [source count]];
-        [fullArray addObject:tmpObj];
-        [source removeObject:tmpObj];
-    }
-    
-    return fullArray;
-}
+//#pragma mark - Model
+//- (NSArray *)generateFullCardArray
+//{
+//    NSArray *suits = @[@"♥︎", @"♦︎", @"♣︎", @"♠︎"];
+//    NSArray *ranks = @[@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
+//    NSMutableArray *fullArray = [@[] mutableCopy];
+//    
+//    for (NSString *suit in suits) {
+//        for (NSString *rank in ranks) {
+//            [fullArray addObject:[suit stringByAppendingString:rank]];
+//        }
+//    }
+//    
+//    return fullArray;
+//}
+//
+//// Not good, maybe to use generator
+//- (NSArray *)generateRandomCardArrayFrom:(NSArray *)sourceArray
+//{
+//    NSMutableArray *fullArray = [@[] mutableCopy];
+//    NSMutableArray *source = [sourceArray mutableCopy];
+//    
+//    while ([source count] > 0) {
+//        NSString *tmpObj = [source objectAtIndex:arc4random() % [source count]];
+//        [fullArray addObject:tmpObj];
+//        [source removeObject:tmpObj];
+//    }
+//    
+//    return fullArray;
+//}
 
 
 

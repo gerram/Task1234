@@ -18,16 +18,21 @@
 @implementation MERMemoryCardV
 
 #pragma mark - Properties
-- (void)setRank:(NSUInteger)rank
+//- (void)setRank:(NSUInteger)rank
+//{
+//    _rank = rank;
+//    [self setNeedsDisplay];
+//}
+- (void)setRank:(NSString *)rank
 {
     _rank = rank;
     [self setNeedsDisplay];
 }
 
-- (NSString *)rankAsString
-{
-    return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"][self.rank];
-}
+//- (NSString *)rankAsString
+//{
+//    return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"][self.rank];
+//}
 
 - (void)setFaceUP:(BOOL)faceUP
 {
@@ -69,7 +74,8 @@
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
-    NSString *pip = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit];
+    //NSString *pip = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit];
+    NSString *pip = [NSString stringWithFormat:@"%@\n%@", self.rank, self.suit];
     NSAttributedString *pipAttr = [[NSAttributedString alloc] initWithString:pip attributes:@{ NSFontAttributeName: cornerFont, NSParagraphStyleAttributeName: paragraphStyle}];
     
     CGRect pipBound;
