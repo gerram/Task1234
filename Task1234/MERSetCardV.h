@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *shape;
 @property (nonatomic, strong) NSString *fill;
-@property (nonatomic, strong) NSString *suit;
+@property (nonatomic, strong) NSString *color;
 @property (nonatomic, assign) NSUInteger rank;
 
 @end

@@ -21,7 +21,15 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 #pragma mark - Properties
 - (void)setShape:(NSString *)shape
 {
-    _shape = shape;
+    if ([shape isEqualToString:@"A"]) {
+        _shape = kDiamond;
+    } else if ([shape isEqualToString:@"B"]) {
+        _shape = kTwix;
+    } else if ([shape isEqualToString:@"C"]) {
+        _shape = kWing;
+    } else {
+        //
+    }
     [self setNeedsDisplay];
 }
 
@@ -31,15 +39,31 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
     [self setNeedsDisplay];
 }
 
-- (void)setSuit:(NSString *)suit
+- (void)setColor:(NSString *)color
 {
-    _suit = suit;
+    if ([color isEqualToString:@"A"]) {
+        _color = kGreen;
+    } else if ([color isEqualToString:@"B"]) {
+        _color = kBlue;
+    } else if ([color isEqualToString:@"C"]) {
+        _color = kGreen;
+    } else {
+        //
+    }
     [self setNeedsDisplay];
 }
 
 - (void)setFill:(NSString *)fill
 {
-    _fill = fill;
+   if ([fill isEqualToString:@"A"]) {
+        _fill = kFull;
+    } else if ([_fill isEqualToString:@"B"]) {
+        _fill = kHatch;
+    } else if ([_fill isEqualToString:@"C"]) {
+        _fill = kBlank;
+    } else {
+        //
+    }
     [self setNeedsDisplay];
 }
 
@@ -144,14 +168,14 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
     CAShapeLayer *shape = [[CAShapeLayer alloc] init];
     shape.frame = [self shapeRect];
     shape.lineWidth = 1.0;
-    shape.strokeColor = [self suitUIColor:_suit].CGColor;
+    shape.strokeColor = [self suitUIColor:_color].CGColor;
     
     if ([_fill isEqualToString:kFull]) {
-        shape.fillColor = [self suitUIColor:_suit].CGColor;
+        shape.fillColor = [self suitUIColor:_color].CGColor;
     
     } else if ([_fill isEqualToString:kHatch]) {
 #pragma TODO: To make with CGPatterns
-        shape.fillColor = [[self suitUIColor:_suit] colorWithAlphaComponent:0.33].CGColor;
+        shape.fillColor = [[self suitUIColor:_color] colorWithAlphaComponent:0.33].CGColor;
     
     } else if ([_fill isEqualToString:kBlank]) {
         shape.fillColor = [UIColor whiteColor].CGColor;
@@ -256,6 +280,10 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 - (void)popContext
 {
     CGContextRestoreGState(UIGraphicsGetCurrentContext());
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@, %@, %@, %lu", _shape, _color, _fill, _rank];
 }
 
 @end

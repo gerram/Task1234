@@ -8,43 +8,43 @@
 
 #import "MERSetVC.h"
 #import "MERSetCardV.h"
+#import "MERSetDeck.h"
 
 @interface MERSetVC ()
-//@property (weak, nonatomic) IBOutlet MERSetCardV *setCard;
-//@property (weak, nonatomic) IBOutlet MERSetCardV *setCardTwix;
-//@property (weak, nonatomic) IBOutlet MERSetCardV *setCardWing;
 @property (strong, nonatomic) IBOutletCollection(MERSetCardV) NSArray *setCards;
+@property (strong, nonatomic) MERSetDeck *deck;
 @end
 
 @implementation MERSetVC
+
+- (MERSetDeck *)deck
+{
+    if (!_deck) {
+        _deck = [[MERSetDeck alloc] init];
+    }
+    return _deck;
+}
+
+
+- (void)drawPlayingCards
+{
+    for (MERSetCardV *card in _setCards) {
+        NSString *cardInString = [self.deck drawRandomCard];
+        card.shape = [cardInString substringWithRange:NSMakeRange(0, 1)];
+        card.color = [cardInString substringWithRange:NSMakeRange(1, 1)];
+        card.fill = [cardInString substringWithRange:NSMakeRange(2, 1)];
+        card.rank = [[cardInString substringWithRange:NSMakeRange(3, 1)] integerValue];
+        NSLog(@"%@", cardInString);
+        NSLog(@"%@", card);
+    }
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // Suits
-    // @[@"green", @"blue", @"red"];
-    
-    // Fills
-    // @[@"full", @"hatch", @"blank"];
-    
-    
-    /*
-    self.setCard.rank = 3;
-    self.setCard.suit = @"red";
-    self.setCard.shape = kDiamond;
-    self.setCard.fill = kFull;
-    
-    self.setCardTwix.rank = 3;
-    self.setCardTwix.suit = @"red";
-    self.setCardTwix.shape = kTwix;
-    self.setCardTwix.fill = kHatch;
-    
-    self.setCardWing.rank = 3;
-    self.setCardWing.suit = @"red";
-    self.setCardWing.shape = kWing;
-    self.setCardWing.fill = kBlank;
-     */
+    [self drawPlayingCards];
 }
 
 - (void)didReceiveMemoryWarning {
