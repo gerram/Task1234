@@ -21,21 +21,16 @@
 @implementation MERMemoryCardV
 
 #pragma mark - Properties
-//- (void)setRank:(NSUInteger)rank
-//{
-//    _rank = rank;
-//    [self setNeedsDisplay];
-//}
-- (void)setRank:(NSString *)rank
+- (void)setRank:(NSUInteger)rank
 {
     _rank = rank;
     [self setNeedsDisplay];
 }
 
-//- (NSString *)rankAsString
-//{
-//    return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"][self.rank];
-//}
+- (NSString *)rankAsString
+{
+    return @[@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K",@"A"][self.rank];
+}
 
 - (void)setFaceUP:(BOOL)faceUP
 {
@@ -55,6 +50,21 @@
     [super drawRect:rect];
     
     if (self.faceUP) {
+        NSString *faceName = [NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit];
+                             UIImage *faceImage = [UIImage imageNamed: faceName];
+        
+        /*
+        NSError *error = nil;
+        NSString *yourFolderPath = [[[NSBundle mainBundle] resourcePath]
+                                    stringByAppendingPathComponent:@"MemoryCardImages"];
+        NSArray  *yourFolderContents = [[NSFileManager defaultManager]
+                                        contentsOfDirectoryAtPath:yourFolderPath error:&error];
+         */
+        
+        if (faceImage) {
+            [faceImage drawInRect:self.bounds];
+        }
+        
         [self drawCorners];
         
     } else {
@@ -77,8 +87,7 @@
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
-    //NSString *pip = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit];
-    NSString *pip = [NSString stringWithFormat:@"%@\n%@", self.rank, self.suit];
+    NSString *pip = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit];
     NSAttributedString *pipAttr = [[NSAttributedString alloc] initWithString:pip attributes:@{ NSFontAttributeName: cornerFont, NSParagraphStyleAttributeName: paragraphStyle}];
     
     CGRect pipBound;
@@ -89,6 +98,23 @@
     [self pushContexCTMRotate180];
     [pipAttr drawInRect:pipBound];
     [self popContext];
+}
+
+- (void)drawFace
+{
+    CGFloat scaleFace = 0.7;
+    UIOffset offset = UIOffsetMake(20, 20);
+    
+    NSString *faceName;
+    if ((_rank >= 9) && (_rank < 12)) {
+        NSString *rankInString = [self rankAsString];
+        faceName = [NSString stringWithFormat:@"%@%@", self.suit, rankInString];
+        
+        CGRect faceRect = CGRectMake(offset.horizontal, offset.vertical, self.bounds.size.width * scaleFace, self.bounds.size.height * 0.7);
+        
+    } else {
+        // draw pips
+    }
 }
 
 - (void)pushContexCTMRotate180

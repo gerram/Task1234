@@ -22,9 +22,10 @@
 // overriding
 - (NSMutableArray *)arrayGenerator
 {
-    NSArray *suits = @[@"♥︎", @"♦︎", @"♣︎", @"♠︎"];
-    NSArray *ranks = @[@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
-    NSMutableArray *fullArray = [@[] mutableCopy];
+
+    NSArray *suits = @[@"A", @"B", @"C", @"D"];
+    NSArray *ranks = @[@"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K", @"A"];
+    NSMutableArray *fullArray = [[NSMutableArray alloc] init];
     
     for (NSString *suit in suits) {
         for (NSString *rank in ranks) {

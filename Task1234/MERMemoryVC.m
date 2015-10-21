@@ -28,10 +28,14 @@
 
 - (void)drawPlayingCards
 {
+    NSDictionary *suits = @{@"A": @"♥︎", @"B": @"♦︎", @"C": @"♣︎", @"D": @"♠︎"};
+    NSArray *ranks = @[@"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K", @"A"];
+    
     for (MERMemoryCardV *card in _memoryCards) {
         NSString *cardInString = [self.deck drawRandomCard];
-        card.suit = [cardInString substringWithRange:NSMakeRange(0, 1)];
-        card.rank = [cardInString substringWithRange:NSMakeRange(1, cardInString.length - 1)];
+        card.suit = suits[[cardInString substringWithRange:NSMakeRange(0, 1)]];
+        NSString *rankInString = [cardInString substringWithRange:NSMakeRange(1, cardInString.length - 1)];
+        card.rank = [ranks indexOfObject:rankInString];
         card.faceUP = FALSE;
     }
 }
@@ -58,38 +62,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-//#pragma mark - Model
-//- (NSArray *)generateFullCardArray
-//{
-//    NSArray *suits = @[@"♥︎", @"♦︎", @"♣︎", @"♠︎"];
-//    NSArray *ranks = @[@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
-//    NSMutableArray *fullArray = [@[] mutableCopy];
-//    
-//    for (NSString *suit in suits) {
-//        for (NSString *rank in ranks) {
-//            [fullArray addObject:[suit stringByAppendingString:rank]];
-//        }
-//    }
-//    
-//    return fullArray;
-//}
-//
-//// Not good, maybe to use generator
-//- (NSArray *)generateRandomCardArrayFrom:(NSArray *)sourceArray
-//{
-//    NSMutableArray *fullArray = [@[] mutableCopy];
-//    NSMutableArray *source = [sourceArray mutableCopy];
-//    
-//    while ([source count] > 0) {
-//        NSString *tmpObj = [source objectAtIndex:arc4random() % [source count]];
-//        [fullArray addObject:tmpObj];
-//        [source removeObject:tmpObj];
-//    }
-//    
-//    return fullArray;
-//}
-
 
 
 @end
