@@ -21,15 +21,7 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 #pragma mark - Properties
 - (void)setShape:(NSString *)shape
 {
-    if ([shape isEqualToString:@"A"]) {
-        _shape = kDiamond;
-    } else if ([shape isEqualToString:@"B"]) {
-        _shape = kTwix;
-    } else if ([shape isEqualToString:@"C"]) {
-        _shape = kWing;
-    } else {
-        //
-    }
+    _shape = shape;
     [self setNeedsDisplay];
 }
 
@@ -41,34 +33,19 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
 
 - (void)setColor:(NSString *)color
 {
-    if ([color isEqualToString:@"A"]) {
-        _color = kGreen;
-    } else if ([color isEqualToString:@"B"]) {
-        _color = kBlue;
-    } else if ([color isEqualToString:@"C"]) {
-        _color = kGreen;
-    } else {
-        //
-    }
+    _color = color;
     [self setNeedsDisplay];
 }
 
 - (void)setFill:(NSString *)fill
 {
-   if ([fill isEqualToString:@"A"]) {
-        _fill = kFull;
-    } else if ([_fill isEqualToString:@"B"]) {
-        _fill = kHatch;
-    } else if ([_fill isEqualToString:@"C"]) {
-        _fill = kBlank;
-    } else {
-        //
-    }
+    _fill = fill;
     [self setNeedsDisplay];
 }
 
 - (UIColor *)suitUIColor:(NSString *)colorString
 {
+    //NSDictionary *colors = @{kGreen: [UIColor greenColor], kBlue: [UIColor blueColor], kRed: [UIColor redColor]};
     if ([colorString isEqualToString:kGreen]) {
         return [UIColor greenColor];
     } else if ([colorString isEqualToString:kBlue]) {

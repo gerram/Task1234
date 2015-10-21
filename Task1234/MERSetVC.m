@@ -28,14 +28,17 @@
 
 - (void)drawPlayingCards
 {
+    NSDictionary *shapes = @{@"A": kDiamond, @"B": kTwix, @"C": kWing};
+    NSDictionary *colors = @{@"A": kGreen, @"B": kBlue, @"C": kRed};
+    NSDictionary *fills = @{@"A": kFull, @"B": kHatch, @"C": kBlank};
     for (MERSetCardV *card in _setCards) {
         NSString *cardInString = [self.deck drawRandomCard];
-        card.shape = [cardInString substringWithRange:NSMakeRange(0, 1)];
-        card.color = [cardInString substringWithRange:NSMakeRange(1, 1)];
-        card.fill = [cardInString substringWithRange:NSMakeRange(2, 1)];
+        card.shape = shapes[[cardInString substringWithRange:NSMakeRange(0, 1)]];
+        card.color = colors[[cardInString substringWithRange:NSMakeRange(1, 1)]];
+        card.fill = fills[[cardInString substringWithRange:NSMakeRange(2, 1)]];
         card.rank = [[cardInString substringWithRange:NSMakeRange(3, 1)] integerValue];
-        NSLog(@"%@", cardInString);
-        NSLog(@"%@", card);
+        //NSLog(@"%@", cardInString);
+        //NSLog(@"%@", card);
     }
 }
 
