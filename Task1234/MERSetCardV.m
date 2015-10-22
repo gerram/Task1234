@@ -43,7 +43,7 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
     [self setNeedsDisplay];
 }
 
-- (UIColor *)suitUIColor:(NSString *)colorString
+- (UIColor *)shapeUIColor:(NSString *)colorString
 {
     //NSDictionary *colors = @{kGreen: [UIColor greenColor], kBlue: [UIColor blueColor], kRed: [UIColor redColor]};
     if ([colorString isEqualToString:kGreen]) {
@@ -145,14 +145,14 @@ static const CGFloat SHAPES_BOUNDS_PERCENTAGE = 0.75;
     CAShapeLayer *shape = [[CAShapeLayer alloc] init];
     shape.frame = [self shapeRect];
     shape.lineWidth = 1.0;
-    shape.strokeColor = [self suitUIColor:_color].CGColor;
+    shape.strokeColor = [self shapeUIColor:_color].CGColor;
     
     if ([_fill isEqualToString:kFull]) {
-        shape.fillColor = [self suitUIColor:_color].CGColor;
+        shape.fillColor = [self shapeUIColor:_color].CGColor;
     
     } else if ([_fill isEqualToString:kHatch]) {
 #pragma TODO: To make with CGPatterns
-        shape.fillColor = [[self suitUIColor:_color] colorWithAlphaComponent:0.33].CGColor;
+        shape.fillColor = [[self shapeUIColor:_color] colorWithAlphaComponent:0.33].CGColor;
     
     } else if ([_fill isEqualToString:kBlank]) {
         shape.fillColor = [UIColor whiteColor].CGColor;

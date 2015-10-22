@@ -28,12 +28,12 @@
 
 - (void)drawPlayingCards
 {
-    NSDictionary *suits = @{@"A": @"♥︎", @"B": @"♦︎", @"C": @"♣︎", @"D": @"♠︎"};
+    //NSDictionary *suits = @{@"A": @"♥︎", @"B": @"♦︎", @"C": @"♣︎", @"D": @"♠︎"};
     NSArray *ranks = @[@"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K", @"A"];
     
     for (MERMemoryCardV *card in _memoryCards) {
         NSString *cardInString = [self.deck drawRandomCard];
-        card.suit = suits[[cardInString substringWithRange:NSMakeRange(0, 1)]];
+        card.suit = [cardInString substringWithRange:NSMakeRange(0, 1)];
         NSString *rankInString = [cardInString substringWithRange:NSMakeRange(1, cardInString.length - 1)];
         card.rank = [ranks indexOfObject:rankInString];
         card.faceUP = FALSE;

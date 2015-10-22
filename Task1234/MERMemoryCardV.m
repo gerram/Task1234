@@ -11,6 +11,7 @@
 
 
 
+static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
 
 @interface MERBaseCardV ()
 - (CGFloat)cornerScaleFactor;
@@ -18,9 +19,21 @@
 @end
 
 
+@interface MERMemoryCardV ()
+@property (nonatomic, strong) NSDictionary *suitsDict;
+@end
+
 @implementation MERMemoryCardV
 
 #pragma mark - Properties
+- (NSDictionary *)suitsDict
+{
+    if (!_suitsDict) {
+        _suitsDict = @{@"A": @"♥︎", @"B": @"♦︎", @"C": @"♣︎", @"D": @"♠︎"};
+    }
+    return _suitsDict;
+}
+
 - (void)setRank:(NSUInteger)rank
 {
     _rank = rank;
@@ -50,21 +63,8 @@
     [super drawRect:rect];
     
     if (self.faceUP) {
-        NSString *faceName = [NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit];
-                             UIImage *faceImage = [UIImage imageNamed: faceName];
         
-        /*
-        NSError *error = nil;
-        NSString *yourFolderPath = [[[NSBundle mainBundle] resourcePath]
-                                    stringByAppendingPathComponent:@"MemoryCardImages"];
-        NSArray  *yourFolderContents = [[NSFileManager defaultManager]
-                                        contentsOfDirectoryAtPath:yourFolderPath error:&error];
-         */
-        
-        if (faceImage) {
-            [faceImage drawInRect:self.bounds];
-        }
-        
+        [self drawFaceOrPips];
         [self drawCorners];
         
     } else {
@@ -73,10 +73,24 @@
     }
 }
 
+
+- (CGFloat)offseFaceVertical
+{
+    return (self.bounds.size.height - self.bounds.size.height * FACES_BOUNDS_PERCENTAGE) / 2;
+}
+
+
+- (CGFloat)offsetFaceHorizontal
+{
+    return (self.bounds.size.width - self.bounds.size.width * FACES_BOUNDS_PERCENTAGE) / 2;
+}
+
+
 - (CGFloat)cornerOffset
 {
     return [super cornerRadius] / 3.0;
 }
+
 
 - (void)drawCorners
 {
@@ -87,31 +101,47 @@
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
-    NSString *pip = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit];
-    NSAttributedString *pipAttr = [[NSAttributedString alloc] initWithString:pip attributes:@{ NSFontAttributeName: cornerFont, NSParagraphStyleAttributeName: paragraphStyle}];
+    NSString *cornerLabel = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suitsDict[self.suit]];
+    UIColor *cornerColor = (([_suit isEqualToString:@"A"]) || ([_suit isEqualToString:@"B"])) ? [UIColor redColor] : [UIColor blackColor];
+    NSAttributedString *cornerLabelAttr = [[NSAttributedString alloc] initWithString:cornerLabel attributes:@{ NSFontAttributeName: cornerFont, NSForegroundColorAttributeName: cornerColor, NSParagraphStyleAttributeName: paragraphStyle}];
     
-    CGRect pipBound;
-    pipBound.origin = CGPointMake([self cornerOffset], [self cornerOffset]);
-    pipBound.size = pipAttr.size;
-    [pipAttr drawInRect:pipBound];
+    CGRect cornerLabelBound;
+    cornerLabelBound.origin = CGPointMake([self cornerOffset], [self cornerOffset]);
+    cornerLabelBound.size = cornerLabelAttr.size;
+    [cornerLabelAttr drawInRect:cornerLabelBound];
     
     [self pushContexCTMRotate180];
-    [pipAttr drawInRect:pipBound];
+    [cornerLabelAttr drawInRect:cornerLabelBound];
     [self popContext];
 }
 
-- (void)drawFace
+- (void)drawFaceOrPips
 {
-    CGFloat scaleFace = 0.7;
-    UIOffset offset = UIOffsetMake(20, 20);
-    
-    NSString *faceName;
     if ((_rank >= 9) && (_rank < 12)) {
-        NSString *rankInString = [self rankAsString];
-        faceName = [NSString stringWithFormat:@"%@%@", self.suit, rankInString];
+        UIOffset offset = UIOffsetMake([self offsetFaceHorizontal], [self offseFaceVertical]);
+        CGRect faceRect = CGRectMake(offset.horizontal, offset.vertical, self.bounds.size.width * FACES_BOUNDS_PERCENTAGE, self.bounds.size.height * FACES_BOUNDS_PERCENTAGE);
         
-        CGRect faceRect = CGRectMake(offset.horizontal, offset.vertical, self.bounds.size.width * scaleFace, self.bounds.size.height * 0.7);
+        NSString *faceName = [NSString stringWithFormat:@"%@%@", [self rankAsString], self.suitsDict[self.suit]];
+        UIImage *faceImage = [UIImage imageNamed: faceName];
+        if (faceImage) {
+            [faceImage drawInRect:faceRect];
+        }
+    } else if (_rank == 12) {
+        // Size of font depends on corner, corner depens on rect...
+        UIFont *faceFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        faceFont = [faceFont fontWithSize:self.bounds.size.height / 3];
         
+        UIColor *faceColor = (([_suit isEqualToString:@"A"]) || ([_suit isEqualToString:@"B"])) ? [UIColor redColor] : [UIColor blackColor];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.alignment = NSTextAlignmentCenter;
+        
+        NSAttributedString *faceLabelAttr = [[NSAttributedString alloc] initWithString:self.suitsDict[self.suit] attributes:@{ NSFontAttributeName: faceFont, NSForegroundColorAttributeName: faceColor, NSParagraphStyleAttributeName: paragraphStyle}];
+        
+        CGRect faceLabelBound;
+        faceLabelBound.size = CGSizeMake(self.bounds.size.width, faceLabelAttr.size.height);
+        faceLabelBound.origin = CGPointMake(0, (self.bounds.size.height - faceFont.pointSize) / 2.0);
+        [faceLabelAttr drawInRect:faceLabelBound];
+   
     } else {
         // draw pips
     }
@@ -129,6 +159,7 @@
 {
     CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
+
 
 #pragma mark - Gestures
 // overriden
