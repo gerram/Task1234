@@ -9,20 +9,32 @@
 #import "MERMemoryVC.h"
 #import "MERMemoryCardV.h"
 #import "MERMemoryDeck.h"
+#import "MERMemoryEngine.h"
 
-@interface MERMemoryVC ()
-@property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
+@interface MERMemoryVC () <CardDelegate>
+@property (strong, nonatomic) MERMemoryEngine *model;
 @property (strong, nonatomic) MERMemoryDeck *deck;
+@property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
 @end
 
 @implementation MERMemoryVC
 
+#pragma mark - Properties
 - (MERMemoryDeck *)deck
 {
     if (!_deck) {
         _deck = [[MERMemoryDeck alloc] init];
     }
     return _deck;
+}
+
+
+- (MERMemoryEngine *)model
+{
+    if (!_model) {
+        _model = [[MERMemoryEngine alloc] init];
+    }
+    return _model;
 }
 
 
@@ -37,6 +49,7 @@
         NSString *rankInString = [cardInString substringWithRange:NSMakeRange(1, cardInString.length - 1)];
         card.rank = [ranks indexOfObject:rankInString];
         card.faceUP = FALSE;
+        card.delegate = self;
     }
 }
 
@@ -63,5 +76,11 @@
 }
 */
 
+#pragma mark - CardDelegate
+- (void)clickedCard:(id)sender
+{
+    //
+    NSLog(@"%@", sender);
+}
 
 @end

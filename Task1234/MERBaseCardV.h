@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CardDelegate <NSObject>
+@optional
+- (void)clickedCard:(id)sender;
+@end
+
 @interface MERBaseCardV : UIView
-
-
+@property (nonatomic, weak) id <CardDelegate> delegate;
+@property (nonatomic, assign) BOOL isMatch;
 @end

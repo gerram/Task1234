@@ -8,6 +8,18 @@
 
 #import "MERMemoryEngine.h"
 
+
 @implementation MERMemoryEngine
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+
 
 @end

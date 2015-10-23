@@ -16,6 +16,15 @@ static const CGFloat BASESIZE_WIDTH = 100.0;
 
 @implementation MERBaseCardV
 
+#pragma mark - Properties
+- (BOOL)isIsMatch
+{
+    if (!_isMatch) {
+        _isMatch = FALSE;
+    }
+    return _isMatch;
+}
+
 #pragma mark - Init
 - (void)awakeFromNib
 {
@@ -44,7 +53,8 @@ static const CGFloat BASESIZE_WIDTH = 100.0;
 // To override
 - (void)MERCardRespondToTapGesture:(UITapGestureRecognizer *)recognizer
 {
-    NSLog(@"I was tapped!!!");
+    //NSLog(@"I was tapped!!!");
+    [self.delegate clickedCard:self];
 }
 
 #pragma mark - Drawing

@@ -13,9 +13,11 @@
 
 static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
 
+
 @interface MERBaseCardV ()
 - (CGFloat)cornerScaleFactor;
 - (CGFloat)cornerRadius;
+- (void)MERCardRespondToTapGesture:(UITapGestureRecognizer *)recognizer;
 @end
 
 
@@ -121,7 +123,7 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
         UIOffset offset = UIOffsetMake([self offsetFaceHorizontal], [self offseFaceVertical]);
         CGRect faceRect = CGRectMake(offset.horizontal, offset.vertical, self.bounds.size.width * FACES_BOUNDS_PERCENTAGE, self.bounds.size.height * FACES_BOUNDS_PERCENTAGE);
         
-        NSString *faceName = [NSString stringWithFormat:@"%@%@", [self rankAsString], self.suitsDict[self.suit]];
+        NSString *faceName = [NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit];
         UIImage *faceImage = [UIImage imageNamed: faceName];
         if (faceImage) {
             [faceImage drawInRect:faceRect];
@@ -165,7 +167,12 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
 // overriden
 - (void)MERCardRespondToTapGesture:(UITapGestureRecognizer *)recognizer
 {
-    self.faceUP = !self.faceUP;
+    //self.faceUP = !self.faceUP;
+    if (!self.isMatch) {
+        self.isMatch = TRUE;
+        self.faceUP = !self.faceUP;
+        [super MERCardRespondToTapGesture:recognizer];
+    }
 }
 
 
