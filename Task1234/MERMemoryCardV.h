@@ -14,6 +14,6 @@
 @property (nonatomic, assign) BOOL faceUP;
 @property (nonatomic, strong) NSString *suit;
 
-
+- (NSString *)rankAsString;
 
 @end

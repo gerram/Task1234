@@ -10,5 +10,5 @@
 
 
 @interface MERMemoryEngine : MERBaseEngine
-
+@property (nonatomic, assign) NSUInteger amountCardsForLevel;
 @end

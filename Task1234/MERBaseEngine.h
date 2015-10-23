@@ -11,6 +11,12 @@
 
 @interface MERBaseEngine : NSObject
 @property (nonatomic, assign, readonly) NSInteger scores;
-@property (nonatomic, assign) NSUInteger matchingAmount; // cumulate amount of matching card right now
-@property (nonatomic, assign, readonly) NSInteger competitors; // amount of competitors, 0 => only you, -1 => against computer, 1.. - against people 
+
+//@property (nonatomic, assign) NSUInteger matchingAmount; // cumulate amount of matching card right now
+@property (nonatomic, strong, readonly) NSMutableArray *matchingList;
+
+@property (nonatomic, assign, readonly) NSInteger competitors; // amount of competitors, 0 => only you, -1 => against computer, 1.. - against people
+
+- (void)addCardToMatchingList:(NSString *)cardAbbr;
+
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "MERMemoryEngine.h"
+@interface MERBaseEngine ()
+@property (nonatomic, strong) NSMutableArray *matchingList;
+@end
 
 
 @implementation MERMemoryEngine
@@ -20,6 +23,22 @@
     return self;
 }
 
+#pragma mark - Properties
+- (NSUInteger)amountCardsForLevel
+{
+    if (!_amountCardsForLevel) {
+        self.amountCardsForLevel = 2;
+    }
+    return _amountCardsForLevel;
+}
 
+// overridden
+- (void)matchingListProcessing
+{
+    if ([self.matchingList count] == self.amountCardsForLevel) {
+        NSLog(@"WoW !!! Enough !!!");
+        self.matchingList = nil;
+    }
+}
 
 @end

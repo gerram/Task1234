@@ -80,7 +80,26 @@
 - (void)clickedCard:(id)sender
 {
     //
-    NSLog(@"%@", sender);
+    if ([sender isKindOfClass:[MERMemoryCardV class]]) {
+        MERMemoryCardV *senderObj = sender;
+        //NSLog(@"%@", senderObj.suit);
+        NSString *clickedCard = [NSString stringWithFormat:@"%@%@", senderObj.suit, [senderObj rankAsString]];
+        
+        [self.model addCardToMatchingList:clickedCard];
+        if ([[_model matchingList] count] == 1) {
+            [self updateUI:senderObj];
+        }
+    }
 }
+
+- (void)updateUI:(MERMemoryCardV *)excludedCard {
+    for (MERMemoryCardV *card in _memoryCards) {
+        if (![card isEqual:excludedCard]) {
+            card.faceUP = FALSE;
+            card.isMatch = FALSE;
+        }
+    }
+}
+
 
 @end
