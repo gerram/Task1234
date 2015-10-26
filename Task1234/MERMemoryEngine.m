@@ -60,8 +60,12 @@
             MERMemoryCardV *cardRt = self.matchingList[idx+1];
             
             if ([cardLf.suit isEqualToString:cardRt.suit]) {
-                cardLf.isPlayed = TRUE;
-                cardRt.isPlayed = TRUE;
+                MERMemoryCardV *cardLfScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardLf]];
+                cardLfScene.isPlayed = TRUE;
+                cardLfScene.faceUP = TRUE;
+                MERMemoryCardV *cardRtScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardRt]];
+                cardRtScene.isPlayed = TRUE;
+                cardRtScene.faceUP = TRUE;
                 NSLog(@"!!! +1 score !!!");
             }
             
@@ -71,10 +75,31 @@
         
         }];
         
-        
         self.matchingList = nil;
+        
+    } else {
+        [self.matchingList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            MERMemoryCardV *cardScene = [self.tabledCards objectAtIndex:[self indexOfObject:obj]];
+            cardScene.isMatch = TRUE;
+            cardScene.faceUP = TRUE;
+        }];
     }
 }
+
+
+- (NSUInteger)indexOfObject:(MERMemoryCardV *)cardObj
+{
+    /*
+    Search index of current card object in tabledList
+     */
+    NSPredicate *predA = [NSPredicate predicateWithFormat:@"(suit = %@)", cardObj.suit];
+    NSPredicate *predB = [NSPredicate predicateWithFormat:@"(rank = %d)", cardObj.rank];
+    NSCompoundPredicate *pred = [NSCompoundPredicate andPredicateWithSubpredicates:@[predA, predB]];
+    NSArray *results = [self.tabledCards filteredArrayUsingPredicate:pred];
+    
+    return [self.tabledCards indexOfObject:results.firstObject];
+}
+
 
 #pragma mark - Public
 - (void)addTabledCards:(NSArray *)cardVs

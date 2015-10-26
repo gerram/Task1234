@@ -10,9 +10,11 @@
 
 
 @interface MERMemoryEngine : MERBaseEngine
+
 @property (nonatomic, readonly) NSArray *tabledCards;
 @property (nonatomic, assign) NSUInteger amountCardsForLevel;
 
 - (void) addTabledCards:(NSArray *)cardVs;
 - (void) generateTabledCards:(NSUInteger)quantity;
+
 @end
