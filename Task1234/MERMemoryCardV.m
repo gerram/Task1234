@@ -59,6 +59,16 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
     [self setNeedsDisplay];
 }
 
+
+- (void)setIsPlayed:(BOOL)isPlayed
+{
+    _isPlayed = isPlayed;
+    if (_isPlayed) {
+        self.faceUP = TRUE;
+    }
+    [self setNeedsDisplay];
+}
+
 #pragma mark - Drawing
 - (void)drawRect:(CGRect)rect
 {
@@ -103,6 +113,7 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
+    //NSString *cornerLabel = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suitsDict[self.suit]];
     NSString *cornerLabel = [NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suitsDict[self.suit]];
     UIColor *cornerColor = (([_suit isEqualToString:@"A"]) || ([_suit isEqualToString:@"B"])) ? [UIColor redColor] : [UIColor blackColor];
     NSAttributedString *cornerLabelAttr = [[NSAttributedString alloc] initWithString:cornerLabel attributes:@{ NSFontAttributeName: cornerFont, NSForegroundColorAttributeName: cornerColor, NSParagraphStyleAttributeName: paragraphStyle}];
@@ -123,7 +134,7 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
         UIOffset offset = UIOffsetMake([self offsetFaceHorizontal], [self offseFaceVertical]);
         CGRect faceRect = CGRectMake(offset.horizontal, offset.vertical, self.bounds.size.width * FACES_BOUNDS_PERCENTAGE, self.bounds.size.height * FACES_BOUNDS_PERCENTAGE);
         
-        NSString *faceName = [NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit];
+        NSString *faceName = [NSString stringWithFormat:@"%@%@", self.suit, [self rankAsString]];
         UIImage *faceImage = [UIImage imageNamed: faceName];
         if (faceImage) {
             [faceImage drawInRect:faceRect];
@@ -168,9 +179,12 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
 - (void)MERCardRespondToTapGesture:(UITapGestureRecognizer *)recognizer
 {
     //self.faceUP = !self.faceUP;
-    if (!self.isMatch) {
+    //if (!self.isMatch && !self.isPlayed) {
+    if (self.isPlayed) {
+        //
+    } else if (!self.isMatch) {
         self.isMatch = TRUE;
-        self.faceUP = !self.faceUP;
+        self.faceUP = TRUE;
         [super MERCardRespondToTapGesture:recognizer];
     }
 }

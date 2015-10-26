@@ -30,10 +30,10 @@
 }
 
 
-- (NSString *)drawRandomCard
+- (id)drawRandomCard
 {
     if ([_baseDeck count] > 0) {
-        NSString *card = [_baseDeck objectAtIndex:arc4random() % [_baseDeck count]];
+        id card = [_baseDeck objectAtIndex:arc4random() % [_baseDeck count]];
         [self.baseDeck removeObject:card];
         
         return card;

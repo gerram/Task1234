@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface MERBaseDeck : NSObject
-- (NSString *)drawRandomCard;
+- (id)drawRandomCard;
 @end

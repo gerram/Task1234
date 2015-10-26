@@ -15,5 +15,5 @@
 
 @interface MERBaseCardV : UIView
 @property (nonatomic, weak) id <CardDelegate> delegate;
-@property (nonatomic, assign) BOOL isMatch;
+@property (nonatomic, assign) BOOL isMatch; // state when user taped and choosed a card
 @end

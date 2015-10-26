@@ -7,6 +7,7 @@
 //
 
 #import "MERMemoryDeck.h"
+#import "MERMemoryCardV.h"
 
 @implementation MERMemoryDeck
 
@@ -28,8 +29,17 @@
     NSMutableArray *fullArray = [[NSMutableArray alloc] init];
     
     for (NSString *suit in suits) {
+        /*
         for (NSString *rank in ranks) {
             [fullArray addObject:[suit stringByAppendingString:rank]];
+        }
+         */
+        for (NSString *rank in ranks) {
+            MERMemoryCardV *card = [[MERMemoryCardV alloc] init];
+            card.suit = suit;
+            card.rank = [ranks indexOfObject:rank];
+            
+            [fullArray addObject:card];
         }
     }
     

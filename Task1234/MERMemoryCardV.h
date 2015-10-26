@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) NSUInteger rank;
 @property (nonatomic, assign) BOOL faceUP;
+@property (nonatomic, assign) BOOL isPlayed;
 @property (nonatomic, strong) NSString *suit;
 
 - (NSString *)rankAsString;

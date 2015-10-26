@@ -17,6 +17,6 @@
 
 @property (nonatomic, assign, readonly) NSInteger competitors; // amount of competitors, 0 => only you, -1 => against computer, 1.. - against people
 
-- (void)addCardToMatchingList:(NSString *)cardAbbr;
+- (void)addCardToMatchingList:(id)card;
 
 @end

@@ -26,7 +26,7 @@
 
 
 #pragma mark - Methods
-- (void)addCardToMatchingList:(NSString *)card
+- (void)addCardToMatchingList:(id)card
 {
     [self.matchingList addObject:card];
     [self matchingListProcessing];
