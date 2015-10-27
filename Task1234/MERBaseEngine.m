@@ -9,7 +9,6 @@
 #import "MERBaseEngine.h"
 
 @interface MERBaseEngine ()
-@property (nonatomic, assign) NSInteger scores;
 @property (nonatomic, strong) NSMutableArray *matchingList;
 @end
 

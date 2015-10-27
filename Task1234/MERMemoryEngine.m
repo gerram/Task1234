@@ -12,6 +12,7 @@
 
 @interface MERBaseEngine ()
 @property (nonatomic, strong) NSMutableArray *matchingList;
+@property (nonatomic, assign) NSInteger scores;
 @end
 
 @interface MERMemoryEngine ()
@@ -20,6 +21,7 @@
 @end
 
 @implementation MERMemoryEngine
+@synthesize scores;
 
 - (instancetype)init
 {
@@ -47,13 +49,18 @@
     return _deck;
 }
 
+//- (void)setScores:(NSInteger)scores
+//{
+//    self.scores = scores;
+//}
+
+
 // overridden
 - (void)matchingListProcessing
 {
     if ([self.matchingList count] == self.amountCardsForLevel) {
         NSLog(@"WoW !!! Enough !!!");
         
-        // 1. Check for "A?" isEqual "A?"
         [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             //
             MERMemoryCardV *cardLf = self.matchingList[idx];
@@ -63,17 +70,37 @@
             MERMemoryCardV *cardRtScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardRt]];
             
             if ([cardLf.suit isEqualToString:cardRt.suit]) {
+                // 1. Check for "A?" isEqual "A?"
                 cardLfScene.isPlayed = TRUE;
                 cardLfScene.faceUP = TRUE;
+                cardLfScene.isMatch = FALSE;
                 cardRtScene.isPlayed = TRUE;
                 cardRtScene.faceUP = TRUE;
+                cardRtScene.isMatch = FALSE;
+                scores++;
+                
+                
                 NSLog(@"!!! +1 score !!!");
+                
+            } else if (cardLf.rank == cardRt.rank) {
+                // 2. Check for "?9" isEqual "?9"
+                cardLfScene.isPlayed = TRUE;
+                cardLfScene.faceUP = TRUE;
+                cardLfScene.isMatch = FALSE;
+                cardRtScene.isPlayed = TRUE;
+                cardRtScene.faceUP = TRUE;
+                cardRtScene.isMatch = FALSE;
+                
+                scores = scores + 4;
+                NSLog(@"!!! +4 score !!!");
             
             } else {
                 cardLfScene.faceUP = FALSE;
                 cardLfScene.isMatch = FALSE;
                 cardRtScene.faceUP = FALSE;
                 cardRtScene.isMatch = FALSE;
+                
+                scores--;
                 NSLog(@"!!! -1 score !!!");
             }
             

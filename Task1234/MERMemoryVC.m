@@ -8,13 +8,13 @@
 
 #import "MERMemoryVC.h"
 #import "MERMemoryCardV.h"
-//#import "MERMemoryDeck.h"
 #import "MERMemoryEngine.h"
 
 @interface MERMemoryVC () <CardDelegate>
 @property (strong, nonatomic) MERMemoryEngine *model;
-//@property (strong, nonatomic) MERMemoryDeck *deck;
 @property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
+@property (weak, nonatomic) IBOutlet UILabel *scoresLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *modeGameSegment;
 @end
 
 @implementation MERMemoryVC
@@ -73,9 +73,12 @@
         //NSLog(@"%@", senderObj.suit);
         [self.model addCardToMatchingList:sender];
         
-        //if ([self.model.m count] == 1) {
+        MERMemoryCardV *card = sender;
+        card.faceUP = TRUE;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self updateUI];
-        //}
+        });
     }
 }
 
@@ -87,6 +90,7 @@
         card.faceUP = cardModel.faceUP;
         card.isMatch = cardModel.isMatch;
     }
+    self.scoresLabel.text = [NSString stringWithFormat:@"Scores: %ld", (long)self.model.scores];
 }
 
 

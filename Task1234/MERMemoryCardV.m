@@ -178,8 +178,6 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
 // overriden
 - (void)MERCardRespondToTapGesture:(UITapGestureRecognizer *)recognizer
 {
-    //self.faceUP = !self.faceUP;
-    //if (!self.isMatch && !self.isPlayed) {
     if (!self.isMatch && !self.isPlayed) {
         self.isMatch = TRUE;
         self.faceUP = TRUE;

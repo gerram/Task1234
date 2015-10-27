@@ -76,12 +76,30 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scores:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls9-Rs-0j1">
+                                <rect key="frame" x="20" y="0.0" width="111" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bg3-aV-7sR">
+                                <rect key="frame" x="170" y="0.0" width="121" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="Normal"/>
+                                    <segment title="Easy"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Memory" id="jxI-cX-AoI"/>
                     <connections>
+                        <outlet property="modeGameSegment" destination="Bg3-aV-7sR" id="qzW-aH-2WM"/>
+                        <outlet property="scoresLabel" destination="ls9-Rs-0j1" id="ref-G5-J8F"/>
                         <outletCollection property="memoryCards" destination="B2z-fg-XZK" id="gbL-rq-3rr"/>
                         <outletCollection property="memoryCards" destination="oHz-m5-UKK" id="oOk-7r-Lvd"/>
                         <outletCollection property="memoryCards" destination="A6Q-Iw-Mhz" id="EGs-CN-XyP"/>
@@ -98,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="-399"/>
+            <point key="canvasLocation" x="839" y="-406"/>
         </scene>
         <!--Scores-->
         <scene sceneID="j23-8o-l6y">
