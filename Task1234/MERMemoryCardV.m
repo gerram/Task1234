@@ -180,9 +180,7 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
 {
     //self.faceUP = !self.faceUP;
     //if (!self.isMatch && !self.isPlayed) {
-    if (self.isPlayed) {
-        //
-    } else if (!self.isMatch) {
+    if (!self.isMatch && !self.isPlayed) {
         self.isMatch = TRUE;
         self.faceUP = TRUE;
         [super MERCardRespondToTapGesture:recognizer];
