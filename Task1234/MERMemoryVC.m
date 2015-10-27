@@ -37,7 +37,6 @@
     for (int i = 0; i < [self.model.tabledCards count]; i++) {
         MERMemoryCardV *card = self.memoryCards[i];
         MERMemoryCardV *cardModel = self.model.tabledCards[i];
-        card.faceUP = cardModel.faceUP;
         card.suit = cardModel.suit;
         card.rank = cardModel.rank;
         card.delegate = self;
@@ -86,6 +85,7 @@
         MERMemoryCardV *card = self.memoryCards[i];
         MERMemoryCardV *cardModel = self.model.tabledCards[i];
         card.faceUP = cardModel.faceUP;
+        card.isMatch = cardModel.isMatch;
     }
 }
 

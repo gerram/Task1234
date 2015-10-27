@@ -54,19 +54,27 @@
         NSLog(@"WoW !!! Enough !!!");
         
         // 1. Check for "A?" isEqual "A?"
-        [self.matchingList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             //
             MERMemoryCardV *cardLf = self.matchingList[idx];
             MERMemoryCardV *cardRt = self.matchingList[idx+1];
             
+            MERMemoryCardV *cardLfScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardLf]];
+            MERMemoryCardV *cardRtScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardRt]];
+            
             if ([cardLf.suit isEqualToString:cardRt.suit]) {
-                MERMemoryCardV *cardLfScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardLf]];
                 cardLfScene.isPlayed = TRUE;
                 cardLfScene.faceUP = TRUE;
-                MERMemoryCardV *cardRtScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardRt]];
                 cardRtScene.isPlayed = TRUE;
                 cardRtScene.faceUP = TRUE;
                 NSLog(@"!!! +1 score !!!");
+            
+            } else {
+                cardLfScene.faceUP = FALSE;
+                cardLfScene.isMatch = FALSE;
+                cardRtScene.faceUP = FALSE;
+                cardRtScene.isMatch = FALSE;
+                NSLog(@"!!! -1 score !!!");
             }
             
             if (idx+2 == self.amountCardsForLevel) {
@@ -78,7 +86,7 @@
         self.matchingList = nil;
         
     } else {
-        [self.matchingList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             MERMemoryCardV *cardScene = [self.tabledCards objectAtIndex:[self indexOfObject:obj]];
             cardScene.isMatch = TRUE;
             cardScene.faceUP = TRUE;
