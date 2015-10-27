@@ -89,6 +89,7 @@
         MERMemoryCardV *cardModel = self.model.tabledCards[i];
         card.faceUP = cardModel.faceUP;
         card.isMatch = cardModel.isMatch;
+        card.isPlayed = cardModel.isPlayed;
     }
     self.scoresLabel.text = [NSString stringWithFormat:@"Scores: %ld", (long)self.model.scores];
 }

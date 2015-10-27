@@ -182,6 +182,7 @@ static const CGFloat FACES_BOUNDS_PERCENTAGE = 0.65;
         self.isMatch = TRUE;
         self.faceUP = TRUE;
         [super MERCardRespondToTapGesture:recognizer];
+        //NSLog(@"isMatch: %d, isPlayed: %d", self.isMatch, self.isPlayed);
     }
 }
 
