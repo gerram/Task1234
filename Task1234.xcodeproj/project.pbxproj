@@ -10,6 +10,7 @@
 		171AA55C1BCFED0800C3EB10 /* MERSetEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 171AA55B1BCFED0800C3EB10 /* MERSetEngine.m */; };
 		171AA55F1BCFED2900C3EB10 /* MERMemoryEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 171AA55E1BCFED2900C3EB10 /* MERMemoryEngine.m */; };
 		171AA5631BD0D9C000C3EB10 /* MERScoresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 171AA5621BD0D9C000C3EB10 /* MERScoresVC.m */; };
+		175349081BE7592500E335F3 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 175349071BE7592500E335F3 /* Grid.m */; };
 		17FE63091BD53FA800F976CB /* MERBaseDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FE63081BD53FA800F976CB /* MERBaseDeck.m */; };
 		17FE630C1BD6355100F976CB /* MERMemoryDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FE630B1BD6355100F976CB /* MERMemoryDeck.m */; };
 		17FE630F1BD65EE700F976CB /* MERSetDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FE630E1BD65EE700F976CB /* MERSetDeck.m */; };
@@ -53,6 +54,8 @@
 		171AA55E1BCFED2900C3EB10 /* MERMemoryEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERMemoryEngine.m; sourceTree = "<group>"; };
 		171AA5611BD0D9C000C3EB10 /* MERScoresVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERScoresVC.h; sourceTree = "<group>"; };
 		171AA5621BD0D9C000C3EB10 /* MERScoresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERScoresVC.m; sourceTree = "<group>"; };
+		175349061BE7592500E335F3 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
+		175349071BE7592500E335F3 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 		17FE63071BD53FA800F976CB /* MERBaseDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERBaseDeck.h; sourceTree = "<group>"; };
 		17FE63081BD53FA800F976CB /* MERBaseDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERBaseDeck.m; sourceTree = "<group>"; };
 		17FE630A1BD6355100F976CB /* MERMemoryDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERMemoryDeck.h; sourceTree = "<group>"; };
@@ -125,6 +128,15 @@
 			name = Scores;
 			sourceTree = "<group>";
 		};
+		175349051BE758FF00E335F3 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				175349061BE7592500E335F3 /* Grid.h */,
+				175349071BE7592500E335F3 /* Grid.m */,
+			);
+			name = Grid;
+			sourceTree = "<group>";
+		};
 		5EB10CAA1BCE5B8A00CEA052 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +160,7 @@
 		5EB10CB51BCE5B8A00CEA052 /* Task1234 */ = {
 			isa = PBXGroup;
 			children = (
+				175349051BE758FF00E335F3 /* Grid */,
 				171AA5601BD0D98400C3EB10 /* Scores */,
 				5EB10CFF1BCE8CAE00CEA052 /* BaseClasses */,
 				5EB10CEA1BCE5D7100CEA052 /* Set */,
@@ -375,6 +388,7 @@
 				5EB10CBB1BCE5B8A00CEA052 /* AppDelegate.m in Sources */,
 				5EB10CF01BCE5E5C00CEA052 /* MERMemoryCardV.m in Sources */,
 				171AA55C1BCFED0800C3EB10 /* MERSetEngine.m in Sources */,
+				175349081BE7592500E335F3 /* Grid.m in Sources */,
 				5EB10CF91BCE715C00CEA052 /* MERMemoryVC.m in Sources */,
 				17FE630F1BD65EE700F976CB /* MERSetDeck.m in Sources */,
 				5EB10CB81BCE5B8A00CEA052 /* main.m in Sources */,

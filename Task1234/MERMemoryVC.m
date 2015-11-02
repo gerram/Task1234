@@ -9,12 +9,16 @@
 #import "MERMemoryVC.h"
 #import "MERMemoryCardV.h"
 #import "MERMemoryEngine.h"
+//#import "Grid.h"
 
 @interface MERMemoryVC () <CardDelegate>
 @property (strong, nonatomic) MERMemoryEngine *model;
+//@property (nonatomic) Grid *grid;
+
 @property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
 @property (weak, nonatomic) IBOutlet UILabel *scoresLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeGameSegment;
+
 @end
 
 @implementation MERMemoryVC
@@ -28,19 +32,35 @@
     return _model;
 }
 
+/*
+- (Grid *)grid
+{
+    if (!_grid) {
+        _grid = [[Grid alloc] init];
+        _grid.size = [UIScreen mainScreen].bounds.size;
+        _grid.cellAspectRatio = 3.0 / 4.0;
+        _grid.minimumNumberOfCells = 15;
+        
+        // Optional
+        _grid.minCellHeight = 50.0;
+        _grid.maxCellHeight = 50.0;
+    }
+    return _grid;
+}
+*/
 
 - (void)drawPlayingCards
 {
     // Start game
     [self.model generateTabledCards:[_memoryCards count]];
     
-    for (int i = 0; i < [self.model.tabledCards count]; i++) {
-        MERMemoryCardV *card = self.memoryCards[i];
-        MERMemoryCardV *cardModel = self.model.tabledCards[i];
+    [self.model.tabledCards enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        MERMemoryCardV *card = self.memoryCards[idx];
+        MERMemoryCardV *cardModel = self.model.tabledCards[idx];
         card.suit = cardModel.suit;
         card.rank = cardModel.rank;
         card.delegate = self;
-    }
+    }];
 }
 
 
@@ -50,6 +70,8 @@
     
     [self drawPlayingCards];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

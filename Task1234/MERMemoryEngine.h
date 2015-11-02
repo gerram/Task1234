@@ -9,10 +9,15 @@
 #import "MERBaseEngine.h"
 
 
+typedef NS_ENUM(NSUInteger, GameMode) {
+    GameModeEasy,
+    GameModeNormal,
+};
+
 @interface MERMemoryEngine : MERBaseEngine
 
 @property (nonatomic, readonly) NSArray *tabledCards;
-@property (nonatomic, assign) NSUInteger amountCardsForLevel;
+@property (nonatomic, assign) GameMode gameMode;
 
 - (void) addTabledCards:(NSArray *)cardVs;
 - (void) generateTabledCards:(NSUInteger)quantity;

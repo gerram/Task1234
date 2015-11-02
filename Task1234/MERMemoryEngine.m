@@ -18,10 +18,12 @@
 @interface MERMemoryEngine ()
 @property (nonatomic, strong) NSArray *tabledCards;
 @property (strong, nonatomic) MERMemoryDeck *deck;
+@property (nonatomic, assign) NSUInteger amountCardsForLevel;
 @end
 
 @implementation MERMemoryEngine
 @synthesize scores;
+@synthesize gameMode = _gameMode;
 
 - (instancetype)init
 {
@@ -36,7 +38,7 @@
 - (NSUInteger)amountCardsForLevel
 {
     if (!_amountCardsForLevel) {
-        self.amountCardsForLevel = 2;
+        _amountCardsForLevel = 2;
     }
     return _amountCardsForLevel;
 }
@@ -49,6 +51,30 @@
     return _deck;
 }
 
+- (GameMode)gameMode
+{
+    if (!_gameMode) {
+        //_gameMode = GameModeNormal;
+        _gameMode = GameModeEasy;
+    }
+    return _gameMode;
+}
+
+- (void)setGameMode:(GameMode)gameMode
+{
+    if (self.gameMode != gameMode) {
+        self.gameMode = gameMode;
+    }
+    
+    if (gameMode == GameModeEasy) {
+        self.amountCardsForLevel = 3;
+    } else if (gameMode == GameModeNormal) {
+        self.amountCardsForLevel = 2;
+    }
+
+    return;
+}
+
 //- (void)setScores:(NSInteger)scores
 //{
 //    self.scores = scores;
@@ -58,58 +84,69 @@
 // overridden
 - (void)matchingListProcessing
 {
-    if ([self.matchingList count] == self.amountCardsForLevel) {
+    if ([self.matchingList count] == self.amountCardsForLevel ) {
         NSLog(@"WoW !!! Enough !!!");
         
-        [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            //
-            MERMemoryCardV *cardLf = self.matchingList[idx];
-            MERMemoryCardV *cardRt = self.matchingList[idx+1];
+        typedef int (^PairScore)(NSArray *source);
+        PairScore pairScore = ^int (NSArray *source) {
             
-            MERMemoryCardV *cardLfScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardLf]];
-            MERMemoryCardV *cardRtScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardRt]];
             
-            if ([cardLf.suit isEqualToString:cardRt.suit]) {
-                // 1. Check for "A?" isEqual "A?"
-                cardLfScene.isPlayed = TRUE;
-                cardLfScene.faceUP = TRUE;
-                cardLfScene.isMatch = FALSE;
-                cardRtScene.isPlayed = TRUE;
-                cardRtScene.faceUP = TRUE;
-                cardRtScene.isMatch = FALSE;
-                scores++;
-                
-                
-                NSLog(@"!!! +1 score !!!");
-                
-            } else if (cardLf.rank == cardRt.rank) {
-                // 2. Check for "?9" isEqual "?9"
-                cardLfScene.isPlayed = TRUE;
-                cardLfScene.faceUP = TRUE;
-                cardLfScene.isMatch = FALSE;
-                cardRtScene.isPlayed = TRUE;
-                cardRtScene.faceUP = TRUE;
-                cardRtScene.isMatch = FALSE;
-                
-                scores = scores + 4;
-                NSLog(@"!!! +4 score !!!");
-            
-            } else {
-                cardLfScene.faceUP = FALSE;
-                cardLfScene.isMatch = FALSE;
-                cardRtScene.faceUP = FALSE;
-                cardRtScene.isMatch = FALSE;
-                
-                scores--;
-                NSLog(@"!!! -1 score !!!");
-            }
-            
-            if (idx+2 == self.amountCardsForLevel) {
-                *stop = TRUE;
-            }
+            return 0;
+        };
         
-        }];
+        if (self.gameMode == GameModeNormal) {
+            [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                //
+                MERMemoryCardV *cardLf = self.matchingList[idx];
+                MERMemoryCardV *cardRt = self.matchingList[idx+1];
+                
+                MERMemoryCardV *cardLfScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardLf]];
+                MERMemoryCardV *cardRtScene = [self.tabledCards objectAtIndex:[self indexOfObject:cardRt]];
+                
+                if ([cardLf.suit isEqualToString:cardRt.suit]) {
+                    // 1. Check for "A?" isEqual "A?"
+                    cardLfScene.isPlayed = TRUE;
+                    cardLfScene.faceUP = TRUE;
+                    cardLfScene.isMatch = FALSE;
+                    cardRtScene.isPlayed = TRUE;
+                    cardRtScene.faceUP = TRUE;
+                    cardRtScene.isMatch = FALSE;
+                    
+                    scores++;
+                    NSLog(@"!!! +1 score !!!");
+                    
+                } else if (cardLf.rank == cardRt.rank) {
+                    // 2. Check for "?9" isEqual "?9"
+                    cardLfScene.isPlayed = TRUE;
+                    cardLfScene.faceUP = TRUE;
+                    cardLfScene.isMatch = FALSE;
+                    cardRtScene.isPlayed = TRUE;
+                    cardRtScene.faceUP = TRUE;
+                    cardRtScene.isMatch = FALSE;
+                    
+                    scores = scores + 4;
+                    NSLog(@"!!! +4 score !!!");
+                    
+                } else {
+                    cardLfScene.faceUP = FALSE;
+                    cardLfScene.isMatch = FALSE;
+                    cardRtScene.faceUP = FALSE;
+                    cardRtScene.isMatch = FALSE;
+                    
+                    scores--;
+                    NSLog(@"!!! -1 score !!!");
+                }
+                
+                if (idx+2 == self.amountCardsForLevel) {
+                    *stop = TRUE;
+                }
+                
+            }];
         
+        } else if (self.gameMode == GameModeEasy) {
+            
+        }
+    
         self.matchingList = nil;
         
     } else {

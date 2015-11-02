@@ -17,13 +17,17 @@ static const CGFloat BASESIZE_WIDTH = 100.0;
 @implementation MERBaseCardV
 
 #pragma mark - Properties
-- (BOOL)isIsMatch
+- (BOOL)isMatch
 {
     if (!_isMatch) {
         _isMatch = FALSE;
     }
     return _isMatch;
 }
+
+
+
+
 
 #pragma mark - Init
 - (void)awakeFromNib

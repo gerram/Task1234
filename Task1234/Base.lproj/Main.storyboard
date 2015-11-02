@@ -34,62 +34,152 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B2z-fg-XZK" customClass="MERMemoryCardV">
-                                <rect key="frame" x="20" y="69" width="75" height="100"/>
+                                <rect key="frame" x="20" y="69" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oHz-m5-UKK" customClass="MERMemoryCardV">
-                                <rect key="frame" x="116" y="69" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXu-DE-yLv" customClass="MERMemoryCardV">
+                                <rect key="frame" x="78" y="69" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A6Q-Iw-Mhz" customClass="MERMemoryCardV">
-                                <rect key="frame" x="216" y="69" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68l-jD-qxg" customClass="MERMemoryCardV">
+                                <rect key="frame" x="136" y="69" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iEM-t2-0Fs" customClass="MERMemoryCardV">
-                                <rect key="frame" x="20" y="191" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="atQ-kJ-p4T" customClass="MERMemoryCardV">
+                                <rect key="frame" x="194" y="69" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1E-yX-Uxp" customClass="MERMemoryCardV">
-                                <rect key="frame" x="116" y="191" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90r-0U-e1b" customClass="MERMemoryCardV">
+                                <rect key="frame" x="252" y="69" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jek-BG-bxM" customClass="MERMemoryCardV">
-                                <rect key="frame" x="216" y="191" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxa-YL-Nj4" customClass="MERMemoryCardV">
+                                <rect key="frame" x="20" y="147" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ket-d5-PWr" customClass="MERMemoryCardV">
-                                <rect key="frame" x="20" y="310" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpF-Np-D0k" customClass="MERMemoryCardV">
+                                <rect key="frame" x="78" y="147" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ND-Y9-0lu" customClass="MERMemoryCardV">
-                                <rect key="frame" x="116" y="310" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wck-JP-gFW" customClass="MERMemoryCardV">
+                                <rect key="frame" x="136" y="147" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaz-qr-YbD" customClass="MERMemoryCardV">
-                                <rect key="frame" x="216" y="310" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ck8-Bt-wIP" customClass="MERMemoryCardV">
+                                <rect key="frame" x="194" y="147" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-pT-2pK" customClass="MERMemoryCardV">
-                                <rect key="frame" x="20" y="431" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LAg-YN-rrd" customClass="MERMemoryCardV">
+                                <rect key="frame" x="252" y="147" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAb-YW-LWG" customClass="MERMemoryCardV">
-                                <rect key="frame" x="116" y="431" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h9Y-No-Cuk" customClass="MERMemoryCardV">
+                                <rect key="frame" x="20" y="225" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cUZ-sA-uvr" customClass="MERMemoryCardV">
-                                <rect key="frame" x="216" y="431" width="75" height="100"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4eC-cF-h18" customClass="MERMemoryCardV">
+                                <rect key="frame" x="78" y="225" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6TV-XM-u9U" customClass="MERMemoryCardV">
+                                <rect key="frame" x="136" y="225" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flj-XO-tKH" customClass="MERMemoryCardV">
+                                <rect key="frame" x="194" y="225" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FDd-fX-rYT" customClass="MERMemoryCardV">
+                                <rect key="frame" x="252" y="225" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HEO-Gv-fbd" customClass="MERMemoryCardV">
+                                <rect key="frame" x="20" y="303" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V08-gf-JSm" customClass="MERMemoryCardV">
+                                <rect key="frame" x="136" y="303" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HX7-Ta-uj7" customClass="MERMemoryCardV">
+                                <rect key="frame" x="194" y="303" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eyC-wB-uHe" customClass="MERMemoryCardV">
+                                <rect key="frame" x="252" y="303" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9qS-hb-XQe" customClass="MERMemoryCardV">
+                                <rect key="frame" x="20" y="381" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VxJ-nf-QDy" customClass="MERMemoryCardV">
+                                <rect key="frame" x="78" y="381" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iY2-Ml-bAX" customClass="MERMemoryCardV">
+                                <rect key="frame" x="136" y="381" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qL0-jv-gDb" customClass="MERMemoryCardV">
+                                <rect key="frame" x="194" y="381" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7n-rZ-LOv" customClass="MERMemoryCardV">
+                                <rect key="frame" x="252" y="381" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ail-U2-0BC" customClass="MERMemoryCardV">
+                                <rect key="frame" x="20" y="459" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnP-7T-yw0" customClass="MERMemoryCardV">
+                                <rect key="frame" x="78" y="459" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tcP-ll-NCf" customClass="MERMemoryCardV">
+                                <rect key="frame" x="136" y="459" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLt-qi-N2c" customClass="MERMemoryCardV">
+                                <rect key="frame" x="194" y="459" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SJM-d5-xj8" customClass="MERMemoryCardV">
+                                <rect key="frame" x="252" y="459" width="50" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGd-n8-JVy" customClass="MERMemoryCardV">
+                                <rect key="frame" x="78" y="303" width="50" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -108,22 +198,41 @@
                         <outlet property="modeGameSegment" destination="Bg3-aV-7sR" id="qzW-aH-2WM"/>
                         <outlet property="scoresLabel" destination="ls9-Rs-0j1" id="ref-G5-J8F"/>
                         <outletCollection property="memoryCards" destination="B2z-fg-XZK" id="gbL-rq-3rr"/>
-                        <outletCollection property="memoryCards" destination="oHz-m5-UKK" id="oOk-7r-Lvd"/>
-                        <outletCollection property="memoryCards" destination="A6Q-Iw-Mhz" id="EGs-CN-XyP"/>
-                        <outletCollection property="memoryCards" destination="iEM-t2-0Fs" id="KWf-02-OyL"/>
-                        <outletCollection property="memoryCards" destination="B1E-yX-Uxp" id="acU-4g-Dd3"/>
-                        <outletCollection property="memoryCards" destination="jek-BG-bxM" id="JUE-xj-Ied"/>
-                        <outletCollection property="memoryCards" destination="ket-d5-PWr" id="Yxd-pX-Oj9"/>
-                        <outletCollection property="memoryCards" destination="3ND-Y9-0lu" id="Syq-dV-AM7"/>
-                        <outletCollection property="memoryCards" destination="eaz-qr-YbD" id="Bkf-5A-dPj"/>
-                        <outletCollection property="memoryCards" destination="RaI-pT-2pK" id="2Zz-lo-qWB"/>
-                        <outletCollection property="memoryCards" destination="hAb-YW-LWG" id="ESW-I8-NVz"/>
-                        <outletCollection property="memoryCards" destination="cUZ-sA-uvr" id="tNI-Fx-1Im"/>
+                        <outletCollection property="memoryCards" destination="eXu-DE-yLv" id="ikY-ni-MZJ"/>
+                        <outletCollection property="memoryCards" destination="eXu-DE-yLv" id="JTh-1G-FNz"/>
+                        <outletCollection property="memoryCards" destination="68l-jD-qxg" id="rCN-nk-2dw"/>
+                        <outletCollection property="memoryCards" destination="atQ-kJ-p4T" id="oEY-0T-CuG"/>
+                        <outletCollection property="memoryCards" destination="90r-0U-e1b" id="U2U-6g-IsT"/>
+                        <outletCollection property="memoryCards" destination="oxa-YL-Nj4" id="bcL-ao-xUT"/>
+                        <outletCollection property="memoryCards" destination="dpF-Np-D0k" id="dkA-Lh-fxa"/>
+                        <outletCollection property="memoryCards" destination="Wck-JP-gFW" id="n9D-Uz-ibN"/>
+                        <outletCollection property="memoryCards" destination="Ck8-Bt-wIP" id="LIq-to-srC"/>
+                        <outletCollection property="memoryCards" destination="LAg-YN-rrd" id="EMw-Qp-e9m"/>
+                        <outletCollection property="memoryCards" destination="h9Y-No-Cuk" id="zHO-Ed-the"/>
+                        <outletCollection property="memoryCards" destination="4eC-cF-h18" id="Pk9-O4-znn"/>
+                        <outletCollection property="memoryCards" destination="6TV-XM-u9U" id="RD4-NI-35P"/>
+                        <outletCollection property="memoryCards" destination="flj-XO-tKH" id="1Hg-K4-lHh"/>
+                        <outletCollection property="memoryCards" destination="FDd-fX-rYT" id="4pw-Mg-d1z"/>
+                        <outletCollection property="memoryCards" destination="HEO-Gv-fbd" id="w1C-UD-Hua"/>
+                        <outletCollection property="memoryCards" destination="eGd-n8-JVy" id="clJ-f5-ubt"/>
+                        <outletCollection property="memoryCards" destination="V08-gf-JSm" id="8Yc-Zf-eUx"/>
+                        <outletCollection property="memoryCards" destination="HX7-Ta-uj7" id="YcF-CM-8Kz"/>
+                        <outletCollection property="memoryCards" destination="eyC-wB-uHe" id="WqQ-Lu-9zw"/>
+                        <outletCollection property="memoryCards" destination="9qS-hb-XQe" id="aCi-ve-EwK"/>
+                        <outletCollection property="memoryCards" destination="VxJ-nf-QDy" id="57c-Dh-Do8"/>
+                        <outletCollection property="memoryCards" destination="iY2-Ml-bAX" id="BJ4-KT-nE0"/>
+                        <outletCollection property="memoryCards" destination="qL0-jv-gDb" id="hte-Ap-aPV"/>
+                        <outletCollection property="memoryCards" destination="L7n-rZ-LOv" id="m2z-Re-mtb"/>
+                        <outletCollection property="memoryCards" destination="ail-U2-0BC" id="aK9-iO-XZb"/>
+                        <outletCollection property="memoryCards" destination="PnP-7T-yw0" id="Ykg-Y9-Mda"/>
+                        <outletCollection property="memoryCards" destination="tcP-ll-NCf" id="ARf-aQ-Z2B"/>
+                        <outletCollection property="memoryCards" destination="sLt-qi-N2c" id="4Iw-t2-XeQ"/>
+                        <outletCollection property="memoryCards" destination="SJM-d5-xj8" id="FiM-Rh-O73"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="-414"/>
+            <point key="canvasLocation" x="860" y="-431"/>
         </scene>
         <!--Scores-->
         <scene sceneID="j23-8o-l6y">
