@@ -38,7 +38,11 @@
 - (NSUInteger)amountCardsForLevel
 {
     if (!_amountCardsForLevel) {
-        _amountCardsForLevel = 2;
+        if (self.gameMode == GameModeEasy) {
+            _amountCardsForLevel = 3;
+        } else if (self.gameMode == GameModeNormal) {
+            _amountCardsForLevel = 2;
+        }
     }
     return _amountCardsForLevel;
 }
@@ -64,12 +68,12 @@
 {
     if (self.gameMode != gameMode) {
         self.gameMode = gameMode;
-    }
-    
-    if (gameMode == GameModeEasy) {
-        self.amountCardsForLevel = 3;
-    } else if (gameMode == GameModeNormal) {
-        self.amountCardsForLevel = 2;
+        
+        if (gameMode == GameModeEasy) {
+            self.amountCardsForLevel = 3;
+        } else if (gameMode == GameModeNormal) {
+            self.amountCardsForLevel = 2;
+        }
     }
 
     return;
@@ -87,13 +91,89 @@
     if ([self.matchingList count] == self.amountCardsForLevel ) {
         NSLog(@"WoW !!! Enough !!!");
         
-        typedef int (^PairScore)(NSArray *source);
-        PairScore pairScore = ^int (NSArray *source) {
+        typedef int (^PairScore)(MERMemoryCardV *lft, MERMemoryCardV *rht);
+        PairScore pairScore = ^int (MERMemoryCardV *lft, MERMemoryCardV *rht) {
+            int scoresI = 0;
+            if ([lft.suit isEqualToString:rht.suit]) {
+                // 1. Check for "A?" isEqual "A?"
+                scoresI++;
+            } else if (lft.rank == rht.rank) {
+                // 2. Check for "?9" isEqual "?9"
+                scoresI = scoresI + 4;
+            } else {
+                scoresI--;
+            }
             
-            
-            return 0;
+            return scoresI;
         };
         
+        __block NSMutableDictionary *scoresRange = [[NSMutableDictionary alloc] init];
+        [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            
+            if (self.gameMode == GameModeNormal) {
+                int scoresI = pairScore(obj, self.matchingList[idx+1]);
+                
+                // Using dict of sets as keys for finding max score in range of possible scores,
+                // generally for easy mode, when you can choose 3 card
+                NSArray *pair = [NSArray arrayWithObjects:obj, self.matchingList[idx+1], nil];
+                scoresRange[pair] = [NSNumber numberWithInt:scoresI];
+                
+            } else if (self.gameMode == GameModeEasy) {
+                int scoresI = pairScore(obj, self.matchingList[idx+1]);
+                NSArray *pair = [NSArray arrayWithObjects:obj, self.matchingList[idx+1], nil];
+                scoresRange[pair] = [NSNumber numberWithInt:scoresI];
+                
+                if (idx+2 < self.amountCardsForLevel) {
+                    int scoresI = pairScore(obj, self.matchingList[idx+2]);
+                    NSArray *pair = [NSArray arrayWithObjects:obj, self.matchingList[idx+2], nil];
+                    scoresRange[pair] = [NSNumber numberWithInt:scoresI];
+                }
+            }
+            
+            // Stop for last item
+            if (idx + 2 == self.amountCardsForLevel) {
+                *stop = TRUE;
+            }
+        
+        }];
+        
+        __block NSArray *result;
+        [scoresRange enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            if ([obj isKindOfClass:[NSNumber class]]) {
+                if ([(NSNumber *)obj intValue]  >= 1) {
+                    result = key;
+                } else if ([(NSNumber *)obj intValue] == 4) {
+                    result = key;
+                    *stop = TRUE;
+                }
+            }
+        }];
+        
+        
+        if (!result) {
+            [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                MERMemoryCardV *cardScene = [self.tabledCards objectAtIndex:[self indexOfObject:obj]];
+                cardScene.faceUP = FALSE;
+                cardScene.isMatch = FALSE;
+                cardScene.faceUP = FALSE;
+                cardScene.isMatch = FALSE;
+            }];
+            self.scores--;
+            
+        } else {
+            MERMemoryCardV *cardAScene = [self.tabledCards objectAtIndex:[self indexOfObject:result[0]]];
+            MERMemoryCardV *cardBScene = [self.tabledCards objectAtIndex:[self indexOfObject:result[1]]];
+            cardAScene.isPlayed = TRUE;
+            cardAScene.faceUP = TRUE;
+            cardAScene.isMatch = FALSE;
+            cardBScene.isPlayed = TRUE;
+            cardBScene.faceUP = TRUE;
+            cardBScene.isMatch = FALSE;
+            self.scores = self.scores + [(NSNumber *)scoresRange[result] intValue];
+        }
+        
+        /*
         if (self.gameMode == GameModeNormal) {
             [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 //
@@ -146,6 +226,7 @@
         } else if (self.gameMode == GameModeEasy) {
             
         }
+        */
     
         self.matchingList = nil;
         
