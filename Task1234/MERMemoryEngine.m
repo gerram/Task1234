@@ -67,11 +67,11 @@
 - (void)setGameMode:(GameMode)gameMode
 {
     if (self.gameMode != gameMode) {
-        self.gameMode = gameMode;
+        _gameMode = gameMode;
         
-        if (gameMode == GameModeEasy) {
+        if (_gameMode == GameModeEasy) {
             self.amountCardsForLevel = 3;
-        } else if (gameMode == GameModeNormal) {
+        } else if (_gameMode == GameModeNormal) {
             self.amountCardsForLevel = 2;
         }
     }
@@ -109,7 +109,6 @@
         
         __block NSMutableDictionary *scoresRange = [[NSMutableDictionary alloc] init];
         [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            
             
             if (self.gameMode == GameModeNormal) {
                 int scoresI = pairScore(obj, self.matchingList[idx+1]);
@@ -159,6 +158,7 @@
                 cardScene.faceUP = FALSE;
                 cardScene.isMatch = FALSE;
             }];
+            
             self.scores--;
             
         } else {
@@ -170,6 +170,19 @@
             cardBScene.isPlayed = TRUE;
             cardBScene.faceUP = TRUE;
             cardBScene.isMatch = FALSE;
+            
+            // Third card in matchingList
+            [self.matchingList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                if (([obj rank] != cardAScene.rank && ![[obj suit] isEqualToString:cardAScene.suit]) &&
+                    ([obj rank] != cardBScene.rank && ![[obj suit] isEqualToString:cardBScene.suit])
+                    ) {
+                    MERMemoryCardV *cardCScene = [self.tabledCards objectAtIndex:[self indexOfObject:obj]];
+                    cardCScene.faceUP = FALSE;
+                    cardCScene.isMatch = FALSE;
+                    *stop = TRUE;
+                }
+            }];
+            
             self.scores = self.scores + [(NSNumber *)scoresRange[result] intValue];
         }
         

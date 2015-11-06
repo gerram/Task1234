@@ -15,6 +15,7 @@
 @property (nonatomic, assign) BOOL isPlayed;
 @property (nonatomic, strong) NSString *suit;
 
+
 - (NSString *)rankAsString;
 
 @end

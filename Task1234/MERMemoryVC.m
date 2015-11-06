@@ -18,10 +18,29 @@
 @property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
 @property (weak, nonatomic) IBOutlet UILabel *scoresLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeGameSegment;
+@property (weak, nonatomic) NSTimer *timer;
 
 @end
 
 @implementation MERMemoryVC
+- (IBAction)doSegment:(id)sender {
+    NSInteger clickedSegment = [sender selectedSegmentIndex];
+    switch (clickedSegment) {
+        case 0:
+        {
+            self.model.gameMode = GameModeNormal;
+            break;
+        }
+        case 1:
+        {
+            self.model.gameMode = GameModeEasy;
+            break;
+        }
+        default:
+            self.model.gameMode = GameModeNormal;
+            break;
+    }
+}
 
 #pragma mark - Properties
 - (MERMemoryEngine *)model
@@ -69,6 +88,7 @@
     // Do any additional setup after loading the view.
     
     [self drawPlayingCards];
+    //self.scoresLabel.text = 0;
 }
 
 
@@ -78,15 +98,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Timer
+- (void)fireTimer:(NSTimer *)timer
+{
+    
 }
-*/
+
 
 #pragma mark - CardDelegate
 - (void)clickedCard:(id)sender
@@ -115,6 +133,8 @@
     }
     self.scoresLabel.text = [NSString stringWithFormat:@"Scores: %ld", (long)self.model.scores];
 }
+
+
 
 
 @end
