@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, GameMode) {
 
 @property (nonatomic, readonly) NSArray *tabledCards;
 @property (nonatomic, assign) GameMode gameMode;
+@property (nonatomic, assign, readonly) NSUInteger matchingListCounter;
 
 - (void) addTabledCards:(NSArray *)cardVs;
 - (void) generateTabledCards:(NSUInteger)quantity;

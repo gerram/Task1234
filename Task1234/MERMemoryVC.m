@@ -14,11 +14,11 @@
 @interface MERMemoryVC () <CardDelegate>
 @property (strong, nonatomic) MERMemoryEngine *model;
 //@property (nonatomic) Grid *grid;
+@property (weak, nonatomic) NSTimer *timer;
 
 @property (strong, nonatomic) IBOutletCollection(MERMemoryCardV) NSArray *memoryCards;
 @property (weak, nonatomic) IBOutlet UILabel *scoresLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeGameSegment;
-@property (weak, nonatomic) NSTimer *timer;
 
 @end
 
@@ -102,7 +102,7 @@
 #pragma mark - Timer
 - (void)fireTimer:(NSTimer *)timer
 {
-    
+    [self updateUI];
 }
 
 
@@ -113,12 +113,26 @@
         //NSLog(@"%@", senderObj.suit);
         [self.model addCardToMatchingList:sender];
         
-        MERMemoryCardV *card = sender;
-        card.faceUP = TRUE;
+        //MERMemoryCardV *card = sender;
+        //card.faceUP = TRUE;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self updateUI];
-        });
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self updateUI];
+//        });
+        
+        if (self.model.matchingListCounter == 0) {
+            //[self updateUI];
+            //MERMemoryCardV *card = sender;
+            //card.faceUP = TRUE;
+        //} else {
+            
+            if (self.timer.valid) {
+                [self.timer invalidate];
+            }
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(fireTimer:) userInfo:nil repeats:FALSE];
+            //MERMemoryCardV *card = sender;
+            //card.faceUP = TRUE;
+        }
     }
 }
 
